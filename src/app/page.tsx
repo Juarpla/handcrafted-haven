@@ -1,7 +1,9 @@
 import React from 'react';
 import HeroSection from '@/app/components/HeroSection';
+import SatisfiedClients from '@/components/SatisfiedClients';
 import Navigation from './ui/Navigation';
-import SatisfiedClients from '@/app/components/SatisfiedClients';
+
+
 
 export default function Home() {
   return (
@@ -10,6 +12,7 @@ export default function Home() {
       <Navigation />
       <HeroSection />
       <SatisfiedClients />
+      
 
     </main>
     </>
