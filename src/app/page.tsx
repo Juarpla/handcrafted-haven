@@ -1,6 +1,7 @@
 import React from 'react';
-import HeroSection from '@/components/HeroSection';
+import HeroSection from '@/app/components/HeroSection';
 import Navigation from './ui/Navigation';
+import SatisfiedClients from '@/app/components/SatisfiedClients';
 
 export default function Home() {
   return (
@@ -8,6 +9,8 @@ export default function Home() {
     <main>
       <Navigation />
       <HeroSection />
+      <SatisfiedClients />
+
     </main>
     </>
   );
