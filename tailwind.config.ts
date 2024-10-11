@@ -11,9 +11,10 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        'custom-orange': "#F4A261",
       },
       boxShadow: {
-        'text-yellow': '2px 2px 5px #E9C46A',
+        'black-shadow': '2px 2px 5px black',
       },
     },
   },

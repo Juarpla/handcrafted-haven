@@ -9,7 +9,7 @@ const HeroSection = () => {
   return (
     <div className="relative flex flex-col items-center justify-center py-16">
       {/* Background image */}
-      <div className="absolute inset-0 z-[-10] opacity-70">
+      <div className="absolute left-0 right-0 w-full h-full z-[-10] opacity-70">
         <Image
           src={Hero}
           alt="Background Hero"
