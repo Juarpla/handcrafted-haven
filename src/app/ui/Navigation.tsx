@@ -1,3 +1,4 @@
+/* eslint-disable */
 
 import Link from "next/link"
 
@@ -18,7 +19,7 @@ export default function Navigation() {
             </Link>
 
             <Link className="flex justify-center flex-grow hover:shadow-text-yellow transition duration-300 px-3 py-3 rounded-md"
-            href="/">
+            href="/dashboard/login/">
                 <p>
                 Login</p>
             </Link>

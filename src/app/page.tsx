@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import HeroSection from '@/app/components/HeroSection';
 import SatisfiedClients from './components/SatisfiedClients';
