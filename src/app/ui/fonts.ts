@@ -1,4 +1,8 @@
+
+import { Playfair } from 'next/font/google';
 import { Raleway, Playfair_Display } from 'next/font/google';
+
+export const playfair = Playfair({ subsets: ['latin'] });
 
 // Configure Raleway
 export const raleway = Raleway({
@@ -13,3 +17,4 @@ export const playfairDisplay = Playfair_Display({
   weight: ['400', '700'],
   style: ['normal', 'italic'],
 });
+
