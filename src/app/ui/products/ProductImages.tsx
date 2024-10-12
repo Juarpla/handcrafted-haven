@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import Blacksmith from '/src/public/images/blacksmithProducts.webp';
+import Pottery from '/src/public/images/HandcraftedPottery.webp';
 import AztecNecklace from '/src/public/images/aztecNecklace.jpg';
 import HandwovenScarf from '/src/public/images/handwovenScarf.webp';
+import Textile from '/src/public/images/Handmade Textile.webp';
 import { playfairDisplay } from '@/app/ui/fonts';
 
 // const Images = () => {
@@ -37,7 +38,7 @@ export default function ProductImages () {
         <div className='flex justify-center space-x-8'>
             <div>
                 <Image
-                    src={Blacksmith} 
+                    src={Pottery} 
                     alt="Image of a variety of blacksmith made products" 
                     height={240}
                     />
@@ -53,6 +54,14 @@ export default function ProductImages () {
             <div>
                 <Image
                 src={HandwovenScarf}
+                alt="Image of a scarf"
+                
+                height={240}
+                />
+            </div>
+            <div>
+                <Image
+                src={Textile}
                 alt="Image of a scarf"
                 
                 height={240}
