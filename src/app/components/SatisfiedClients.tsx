@@ -1,22 +1,24 @@
-// components/SatisfiedClients.tsx
 import Image from 'next/image';
+import jose from '/src/public/images/jose.webp';     // Import estático
+import monica from '/src/public/images/monica.webp'; // Import estático
+import sabrina from '/src/public/images/sabrina.webp'; // Import estático
 
 const SatisfiedClients = () => {
   const clients = [
     {
       name: 'Sabrina Purdue',
-      feedback: 'lorem Ipsum',
-      imgSrc: '/images/sabrina.jpg',
+      feedback: 'The handcrafted textile from the loom fits perfectly in my home, and the quality is outstanding.',
+      imgSrc: sabrina,  // Uso de la variable importada
     },
     {
       name: 'Mónica Ortiz',
-      feedback: 'lorem Ipsum is',
-      imgSrc: '/images/monica.jpg',
+      feedback: 'The ceramic piece was a great purchase; it beautifully decorates my living room and adds a special touch.',
+      imgSrc: monica,  // Uso de la variable importada
     },
     {
-      name: 'Emma Miranda',
-      feedback: 'lorem Ipsum',
-      imgSrc: '/images/emma.jpg',
+      name: 'Jose Miranda',
+      feedback: 'The handmade baskets are very practical in my home and help me stay organized.',
+      imgSrc: jose,  // Uso de la variable importada
     },
   ];
 
@@ -27,7 +29,7 @@ const SatisfiedClients = () => {
         {clients.map((client, index) => (
           <div key={index} className="bg-gray-100 rounded-lg p-4 w-64 text-left">
             <Image
-              src={client.imgSrc}
+              src={client.imgSrc}    // Usar variable importada en lugar de ruta relativa
               alt={client.name}
               width={250}
               height={250}

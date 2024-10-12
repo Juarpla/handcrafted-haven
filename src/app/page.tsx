@@ -1,7 +1,8 @@
 import React from 'react';
-import HeroSection from '@/components/HeroSection';
-import SatisfiedClients from '@/components/SatisfiedClients';
+import HeroSection from '@/app/components/HeroSection';
+import SatisfiedClients from './components/SatisfiedClients';
 import Navigation from './ui/Navigation';
+
 
 
 export default function Home() {
@@ -11,6 +12,9 @@ export default function Home() {
       <Navigation />
       <HeroSection />
       <SatisfiedClients />
+     
+      
+
     </main>
     </>
   );
