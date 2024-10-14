@@ -3,11 +3,11 @@ import Image from 'next/image';
 import Blacksmith from '/src/public/images/blacksmithProducts.webp';
 import AztecNecklace from '/src/public/images/aztecNecklace.jpg';
 import HandwovenScarf from '/src/public/images/handwovenScarf.webp';
-import { playfair } from '@/app/ui/fonts';
+import { playfairDisplay } from '@/app/ui/fonts';
 
 export default function Promotional () {
     return (
-        <div className={`${playfair.className} p-4 border rounded text-3xl font-semibold text-gray-800 m-6 text-center bg-brown-200`}>
+        <div className={`${playfairDisplay.className} p-4 border rounded text-3xl font-semibold text-gray-800 m-6 text-center bg-brown-200`}>
             <h2 >
             Our Most Exciting Products Right Now
             </h2>
