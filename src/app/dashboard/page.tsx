@@ -1,4 +1,3 @@
-
 /* eslint-disable */
 
 import LogoutButton from "../ui/logoutbutton";
@@ -12,14 +11,12 @@ import { playfairDisplay, raleway } from '@/app/ui/fonts';
 export default function Page() {
     return (
         <>
-
-        <h1>Welcome to your dashboard!</h1>
-        
-
         <main>
             <Navigation />
             <h1 className={`${playfairDisplay.className} text-center text-4xl font-bold`}>Welcome</h1>
-            <LogoutButton />
+            <div className="flex justify-center">
+                <LogoutButton />
+            </div>
             <Aboutus />
         </main>
 
