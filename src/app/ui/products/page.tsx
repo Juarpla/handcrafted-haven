@@ -7,8 +7,7 @@ export default function Products () {
     return (
         <>
         <main>
-            <Navigation />
-            <h1 className={`${playfairDisplay.className} text-center text-4xl font-bold p-8`}>Our Handmade Products</h1>
+            <h1 className={`${playfairDisplay.className} text-center text-black text-4xl font-bold p-8`}>Our Handmade Products</h1>
             <div>
                 <ProductImages />
             </div>
