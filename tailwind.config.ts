@@ -11,6 +11,8 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        'custom-orange': '#F4A261',
+        'custom-white':'#eeeeee'
       },
       boxShadow: {
         'text-yellow': '2px 2px 5px #E9C46A',
