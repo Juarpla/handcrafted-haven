@@ -1,48 +1,47 @@
-/* eslint-disable */
-
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "./button"
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "./button";
+import Logos from "./logos.webp";
 
 export default function Navigation() {
+  return (
+    <>
+      <nav className="fixed top-0 w-full h-auto flex items-center justify-between px-4 py-2 bg-opacity-100 z-50 bg-custom-orange shadow-md">
+        <div className="container mx-auto flex items-center justify-between">
+          <div className="flex-shrink-0">
+            <Link href={"/"}>
+              <Image
+                src={Logos}
+                alt="handlecraft-haven-logo"
+                width={80}
+                height={60}
+                className="ml-2 my-0 py-1 rounded-lg object-contain"
+              />
+            </Link>
+          </div>
+          <div className="flex space-x-4">
+            <Link
+              className="flex justify-center items-center transition duration-500 px-3 py-2 text-white font-bold text-lg hover:text-white hover:bg-opacity-90 hover:bg-gray-800 rounded-md"
+              href="./ui/products"
+            >
+              Products
+            </Link>
+            <Link
+              className="flex justify-center items-center transition duration-500 px-3 py-2 text-white font-bold text-lg hover:text-white hover:bg-opacity-90 hover:bg-gray-800 rounded-md"
+              href="/sellers"
+            >
+              Sellers
+            </Link>
 
-    return (
-        <>
-        <nav className="fixed top-0 w-full h-[10%] flex items-center justify-between px-0 py-0 bg-opacity-100 z-50 bg-custom-orange">
-            <div className="flex-shrink-0">
-                <Link
-                href={"/"}>
-                    <Image 
-                    src="https://placehold.co/600x400"
-                    alt="handlecraft-haven-logo"
-                    width={100}
-                    height={80}
-                    className="ml-5 my-0 py-1"
-                />
-                </Link>    
-            </div>
-            <div className="flex flex-shrink-0 h-full py-0 my-0 space-x-0 ">
-                <Link className="flex justify-center items-center transition duration-500 px-3 py-5 text-white font-bold text-xl hover:border-white-100" href="./ui/products">
-                    Products
-                </Link>
-                <Link className="flex justify-center items-center transition duration-500 px-3 py-5 text-white font-bold text-xl" href="/sellers">
-                    Sellers
-                </Link>
-
-                <Link className="flex justify-center transition duration-500 px-1 py-5 text-black font-bold text-xl" href="/dashboard/login">
-                    <Button>
-                        Login
-                    </Button>
-                </Link>
-
-                {/* <Link className="flex justify-center transition duration-500 px-1 py-5 text-black font-bold text-xl" href="/dashboard/login">
-                    <Button>
-                        Register
-                    </Button>
-                </Link> */}
-            </div>
-        </nav>
+            <Link
+              className="flex justify-center items-center transition duration-500 px-1 py-2 text-black font-bold text-lg rounded-md"
+              href="/dashboard/login"
+            >
+              <Button>Login</Button>
+            </Link>
+          </div>
+        </div>
+      </nav>
     </>
-    )
-    
+  );
 }

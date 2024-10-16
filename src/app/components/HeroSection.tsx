@@ -30,7 +30,7 @@ const HeroSection = () => {
       </div>
 
       {/* Image Container */}
-      <div className="relative z-10 flex gap-4">
+      <div className="relative z-10 hidden md:flex gap-4">
         <div className="relative w-60 h-60 rounded-lg overflow-hidden">
           <Image
             src={Handcrafted}
