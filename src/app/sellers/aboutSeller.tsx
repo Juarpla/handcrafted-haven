@@ -5,13 +5,13 @@ import React, { useActionState } from "react";
 
 export default function aboutForm() {
   return (
-    <form className="space-y-3">
-      <div className="flex-1 rounded">
-        <h1 className={`${raleway.className} m-3 text-xl`}>
+    <form className="flex-col space-y-6">
+        <div >
+          <h1 className={`${raleway.className} m-3 text-xl`}>
           Enter your bio here
-        </h1>
+          </h1>
       </div>
-      <div>
+      <div className="p-4 m-6 flex-col rounded">
         <label>Name</label>
         <input id="name" type="text" name="name" required />
         <label>Type of craft</label>
