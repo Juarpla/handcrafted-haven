@@ -1,6 +1,6 @@
 /* eslint-disable */
-import NextAuth from 'next-auth';
-import GitHubProvider from 'next-auth/providers/github';
+import NextAuth from "next-auth";
+import GitHubProvider from "next-auth/providers/github";
 
 export const authOptions = {
   providers: [
@@ -10,12 +10,12 @@ export const authOptions = {
     }),
   ],
   pages: {
-    signIn: '/login', // Custom login page
+    signIn: "/login", // Custom login page
   },
   callbacks: {
-    async redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
+    async redirect({url, baseUrl}: {url: string; baseUrl: string}) {
       // Always redirect to /dashboard after login
-      return '/dashboard';
+      return "/dashboard";
     },
   },
 };

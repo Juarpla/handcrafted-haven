@@ -1,12 +1,12 @@
-import Link from "next/link";
 import Image from "next/image";
-import { Button } from "./button";
+import Link from "next/link";
+import {Button} from "./button";
 import Logos from "./logos.webp";
 
 export default function Navigation() {
   return (
     <>
-      <nav className="fixed top-0 w-full h-auto flex items-center justify-between px-4 py-2 bg-opacity-100 z-50 bg-custom-orange shadow-md">
+      <nav className="fixed top-0 z-50 flex h-auto w-full items-center justify-between bg-custom-orange bg-opacity-100 px-4 py-2 shadow-md">
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex-shrink-0">
             <Link href={"/"}>
@@ -15,26 +15,26 @@ export default function Navigation() {
                 alt="handlecraft-haven-logo"
                 width={80}
                 height={60}
-                className="ml-2 my-0 py-1 rounded-lg object-contain"
+                className="my-0 ml-2 rounded-lg object-contain py-1"
               />
             </Link>
           </div>
           <div className="flex space-x-4">
             <Link
-              className="flex justify-center items-center transition duration-500 px-3 py-2 text-white font-bold text-lg hover:text-white hover:bg-opacity-90 hover:bg-gray-800 rounded-md"
+              className="flex items-center justify-center rounded-md px-3 py-2 text-lg font-bold text-white transition duration-500 hover:bg-gray-800 hover:bg-opacity-90 hover:text-white"
               href="./ui/products"
             >
               Products
             </Link>
             <Link
-              className="flex justify-center items-center transition duration-500 px-3 py-2 text-white font-bold text-lg hover:text-white hover:bg-opacity-90 hover:bg-gray-800 rounded-md"
+              className="flex items-center justify-center rounded-md px-3 py-2 text-lg font-bold text-white transition duration-500 hover:bg-gray-800 hover:bg-opacity-90 hover:text-white"
               href="/sellers"
             >
               Sellers
             </Link>
 
             <Link
-              className="flex justify-center items-center transition duration-500 px-1 py-2 text-black font-bold text-lg rounded-md"
+              className="flex items-center justify-center rounded-md px-1 py-2 text-lg font-bold text-black transition duration-500"
               href="/dashboard/login"
             >
               <Button>Login</Button>

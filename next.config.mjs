@@ -4,8 +4,8 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains : ['placehold.co']
-  }
+    domains: ["placehold.co"],
+  },
 };
 
 export default nextConfig;
