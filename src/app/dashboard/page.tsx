@@ -4,7 +4,7 @@
 
 import LogoutButton from "../ui/logoutbutton";
 import React, { useEffect } from 'react';
-import Navigation from '../ui/Navigation';
+import Navigation from '@/app/ui/layout/Navigation';
 import Aboutus from './aboutUs';
 import { playfairDisplay } from '@/app/ui/fonts';
 import { useSession } from 'next-auth/react';
