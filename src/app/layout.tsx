@@ -1,12 +1,13 @@
 /* eslint-disable */
 
-"use client"; // Mark this as a Client Component
+"use client";
 
-import type { Metadata } from "next";
+// Mark this as a Client Component
+import type {Metadata} from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import {SessionProvider} from "next-auth/react"; // Import SessionProvider
 import Navigation from "./ui/Navigation";
-import { SessionProvider } from 'next-auth/react'; // Import SessionProvider
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -19,7 +20,6 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,9 +28,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased mt-[8%] bg-custom-white`}
+        className={`${geistSans.variable} ${geistMono.variable} mt-[8%] bg-custom-white antialiased`}
       >
-        <SessionProvider> {/* Wrap your app with SessionProvider */}
+        <SessionProvider>
+          {" "}
+          {/* Wrap your app with SessionProvider */}
           <Navigation />
           {children}
         </SessionProvider>

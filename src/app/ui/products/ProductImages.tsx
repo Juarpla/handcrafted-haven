@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import Pottery from '/src/public/images/HandcraftedPottery.webp';
-import AztecNecklace from '/src/public/images/aztecNecklace.jpg';
-import HandwovenScarf from '/src/public/images/handwovenScarf.webp';
-import Textile from '/src/public/images/Handmade Textile.webp';
-import { playfairDisplay } from '@/app/ui/fonts';
+import {playfairDisplay} from "@/app/ui/fonts";
+import AztecNecklace from "/src/public/images/aztecNecklace.jpg";
+import Pottery from "/src/public/images/HandcraftedPottery.webp";
+import Textile from "/src/public/images/Handmade Textile.webp";
+import HandwovenScarf from "/src/public/images/handwovenScarf.webp";
+import Image from "next/image";
+import React, {useEffect, useState} from "react";
 
 // const Images = () => {
 //     const [images, setImages] = useState([]);
@@ -32,43 +32,31 @@ import { playfairDisplay } from '@/app/ui/fonts';
 //     );
 // };
 
-
-export default function ProductImages () {
-    return (
-        <div className='flex justify-center space-x-8'>
-            <div>
-                <Image
-                    src={Pottery} 
-                    alt="Image of a variety of blacksmith made products" 
-                    height={240}
-                    />
-            </div>
-            <div>
-                <Image
-                    src={AztecNecklace} 
-                    alt="Image of aztec silver and turqoise necklace"
-                    width={240}
-                    height={240}
-                    />
-            </div>
-            <div>
-                <Image
-                src={HandwovenScarf}
-                alt="Image of a scarf"
-                
-                height={240}
-                />
-            </div>
-            <div>
-                <Image
-                src={Textile}
-                alt="Image of a scarf"
-                
-                height={240}
-                />
-            </div>
-            {/* <Images /> */}
-        </div>
-        
-    )
+export default function ProductImages() {
+  return (
+    <div className="flex justify-center space-x-8">
+      <div>
+        <Image
+          src={Pottery}
+          alt="Image of a variety of blacksmith made products"
+          height={240}
+        />
+      </div>
+      <div>
+        <Image
+          src={AztecNecklace}
+          alt="Image of aztec silver and turqoise necklace"
+          width={240}
+          height={240}
+        />
+      </div>
+      <div>
+        <Image src={HandwovenScarf} alt="Image of a scarf" height={240} />
+      </div>
+      <div>
+        <Image src={Textile} alt="Image of a scarf" height={240} />
+      </div>
+      {/* <Images /> */}
+    </div>
+  );
 }
