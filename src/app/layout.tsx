@@ -5,7 +5,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Navigation from "./ui/Navigation";
+import Navigation from "./ui/layout/Navigation";
 import { SessionProvider } from 'next-auth/react'; // Import SessionProvider
 
 const geistSans = localFont({
@@ -31,7 +31,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased mt-[8%] bg-custom-white`}
       >
         <SessionProvider> {/* Wrap your app with SessionProvider */}
-          <Navigation />
           {children}
         </SessionProvider>
       </body>

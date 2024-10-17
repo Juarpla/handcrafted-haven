@@ -1,5 +1,5 @@
 import React from 'react';
-import Navigation from '../Navigation';
+import Navigation from '@/app/ui/layout/Navigation';
 import { playfairDisplay, raleway } from '../fonts';
 import ProductImages from './ProductImages';
 
