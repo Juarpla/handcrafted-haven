@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.1.5",
+    "@vercel/postgres": "^0.10.0",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "clsx": "^2.1.1",
     "group-project": "file:",
     "next": "14.2.14",
@@ -19,6 +22,7 @@
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
+    "@types/bcrypt": "^5.0.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

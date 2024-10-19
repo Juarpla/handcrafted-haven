@@ -1,49 +1,53 @@
 "use client";
 
-import React from "react";
-import Link from 'next/link'; // Asegúrate de importar Link de tu framework si usas Next.js u otro
-import { usePathname } from 'next/navigation'; // Asegúrate de tener un hook similar para obtener el path actual
-import clsx from 'clsx';
+// This is likely used to indicate that this component should run on the client side
 import {
-  HomeIcon,
-  DocumentDuplicateIcon,
-  UserGroupIcon,
   CogIcon,
-  InboxIcon,
   CurrencyDollarIcon,
+  DocumentDuplicateIcon,
+  HomeIcon,
+  InboxIcon,
+  UserGroupIcon,
+} from "@heroicons/react/24/outline";
+import clsx from "clsx"; // Utility for conditionally joining classNames
+import Link from "next/link"; // Importing Link from Next.js for navigation between pages
+import {usePathname} from "next/navigation"; // Hook to get the current path in Next.js
+import React from "react";
 
-} from "@heroicons/react/24/outline"; // Asegúrate de tener estos íconos instalados
+// Importing icons from Heroicons library
 
+// Array of links for the sidebar with name, href (link), and icon
 const links = [
-  { name: 'General', href: '/account/general', icon: HomeIcon },
-  { name: 'Settings', href: '/account/settings', icon: CogIcon },
-  { name: 'Followers', href: '/account/followers', icon: UserGroupIcon },
-  { name: 'Payment', href: '/account/payment', icon: CurrencyDollarIcon },
-  { name: 'My Products', href: '/account/products', icon: DocumentDuplicateIcon },
-  { name: 'Message Center', href: '/account/messages', icon: InboxIcon },
-  { name: 'My Earnings', href: '/account/earnings', icon: CurrencyDollarIcon },
- 
+  {name: "General", href: "/dashboard/", icon: HomeIcon},
+  {name: "Settings", href: "/dashboard/settings", icon: CogIcon},
+  {name: "Followers", href: "/dashboard/followers", icon: UserGroupIcon},
+  {name: "Payment", href: "/account/payment", icon: CurrencyDollarIcon},
+  {name: "My Products", href: "/account/products", icon: DocumentDuplicateIcon},
+  {name: "Message Center", href: "/account/messages", icon: InboxIcon},
+  {name: "My Earnings", href: "/account/earnings", icon: CurrencyDollarIcon},
 ];
 
+// Function to render sidebar links
 function SidebarLinks() {
-  const pathname = usePathname();
+  const pathname = usePathname(); // Get the current pathname from Next.js
   return (
     <>
-      {links.map((link) => {
-        const LinkIcon = link.icon;
+      {links.map(link => {
+        const LinkIcon = link.icon; // Destructuring to get the icon for each link
         return (
           <Link
-            key={link.name}
-            href={link.href}
+            key={link.name} // Unique key for each link
+            href={link.href} // Link to the specific path
             className={clsx(
-              'flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3',
+              "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3",
               {
-                'bg-sky-100 text-blue-600': pathname === link.href,
+                "bg-sky-100 text-blue-600": pathname === link.href, // Apply specific styles if the current pathname matches the link's href
               }
             )}
           >
-            <LinkIcon className="w-6" />
-            <p className="hidden md:block">{link.name}</p>
+            <LinkIcon className="w-6" /> {/* Icon for the link */}
+            <p className="hidden md:block">{link.name}</p>{" "}
+            {/* Display link name, hidden on smaller screens */}
           </Link>
         );
       })}
@@ -51,52 +55,76 @@ function SidebarLinks() {
   );
 }
 
+// Main account page component
 const MyAccountPage: React.FC = () => {
   return (
-    <div className="bg-gray-100 min-h-screen p-6">
-      <div className="max-w-6xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+    <div className="min-h-screen bg-gray-100 p-6">
+      {" "}
+      {/* Main container with background and padding */}
+      <div className="mx-auto max-w-6xl overflow-hidden rounded-lg bg-white shadow-md">
+        {" "}
+        {/* Card-like container */}
         <div className="flex">
+          {" "}
+          {/* Flex container for sidebar and main content */}
           {/* Sidebar */}
           <div className="w-1/4 bg-gray-200 p-4">
-            <h2 className="font-bold text-lg mb-4">My Account</h2>
+            <h2 className="mb-4 text-lg font-bold">My Account</h2>{" "}
+            {/* Sidebar title */}
             <ul className="space-y-2">
-              <SidebarLinks />
+              <SidebarLinks /> {/* Render the sidebar links */}
             </ul>
           </div>
-
           {/* Main Content */}
           <div className="w-3/4 p-6">
-            <div className="flex items-center mb-6">
-              <div className="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center">
-                <span>No Photo</span>
+            {" "}
+            {/* Main content section */}
+            <div className="mb-6 flex items-center">
+              {" "}
+              {/* Profile info */}
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gray-300">
+                {" "}
+                {/* Placeholder for profile picture */}
+                <span>No Photo</span> {/* Placeholder text */}
               </div>
               <div className="ml-4">
-                <h2 className="text-2xl font-bold">Alexander Chagua</h2>
+                <h2 className="text-2xl font-bold">Alexander Chagua</h2>{" "}
+                {/* User name */}
               </div>
             </div>
-
             <div className="mb-6">
+              {" "}
+              {/* Section for status items */}
               <div className="grid grid-cols-4 gap-4">
-                <div className="p-4 bg-orange-200 rounded text-center">
-                  <span>Pending Payment</span>
+                {" "}
+                {/* Grid layout for status items */}
+                <div className="rounded bg-orange-200 p-4 text-center">
+                  <span>Pending Payment</span> {/* Status item */}
                 </div>
-                <div className="p-4 bg-orange-200 rounded text-center">
-                  <span>Pending Shipment</span>
+                <div className="rounded bg-orange-200 p-4 text-center">
+                  <span>Pending Shipment</span> {/* Status item */}
                 </div>
-                <div className="p-4 bg-orange-200 rounded text-center">
-                  <span>Shipped</span>
+                <div className="rounded bg-orange-200 p-4 text-center">
+                  <span>Shipped</span> {/* Status item */}
                 </div>
-                <div className="p-4 bg-orange-200 rounded text-center">
-                  <span>Pending Review</span>
+                <div className="rounded bg-orange-200 p-4 text-center">
+                  <span>Pending Review</span> {/* Status item */}
                 </div>
               </div>
             </div>
-
             <div>
-              <h3 className="font-bold text-xl mb-4">Orders</h3>
+              {" "}
+              {/* Orders section */}
+              <h3 className="mb-4 text-xl font-bold">Orders</h3>
               <ul className="space-y-2">
-                <li className="p-4 bg-gray-100 rounded cursor-pointer hover:bg-gray-200">Appeals</li>
-                <li className="p-4 bg-gray-100 rounded cursor-pointer hover:bg-gray-200">Refunds and Returns</li>
+                <li className="cursor-pointer rounded bg-gray-100 p-4 hover:bg-gray-200">
+                  Appeals
+                </li>{" "}
+                {/* Order-related item */}
+                <li className="cursor-pointer rounded bg-gray-100 p-4 hover:bg-gray-200">
+                  Refunds and Returns
+                </li>{" "}
+                {/* Order-related item */}
               </ul>
             </div>
           </div>
@@ -106,4 +134,4 @@ const MyAccountPage: React.FC = () => {
   );
 };
 
-export default MyAccountPage;
+export default MyAccountPage; // Exporting the main account page component

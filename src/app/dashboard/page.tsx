@@ -6,10 +6,10 @@ import {playfairDisplay} from "@/app/ui/fonts";
 import {useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
 import React, {useEffect} from "react";
+import MyAccountPage from "../components/MyAccountPage";
 import LogoutButton from "../ui/logoutbutton";
 import Navigation from "../ui/Navigation";
 import Aboutus from "./aboutUs";
-import MyAccountPage from "../components/MyAccountPage";
 
 export default function Page() {
   const {data: session, status} = useSession(); // Get session status
