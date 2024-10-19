@@ -15,7 +15,7 @@ const users = [
     image_url: "/users/user2.png",
     country: "Canada",
   },
-  // Agregar más usuarios...
+  // Add more users...
 ];
 
 const products = [
@@ -35,7 +35,7 @@ const products = [
     description: "Description for product two.",
     followers_count: 15,
   },
-  // Agregar más productos...
+  // Add more products...
 ];
 
 const payments = [
@@ -53,12 +53,12 @@ const payments = [
     status: "pending",
     date: "2023-02-20",
   },
-  // Agregar más pagos...
+  // Add more payments...
 ];
 
 const revenue = [
-  {month: "Jan", revenue: 2000},
-  // Agregar los demás meses...
+  { month: "Jan", revenue: 2000 },
+  // Add the other months...
 ];
 
 const messages = [
@@ -68,7 +68,7 @@ const messages = [
     content: "Great product!",
     date: "2023-03-01",
   },
-  // Agregar más mensajes...
+  // Add more messages...
 ];
 
-export {users, products, payments, revenue, messages};
+export { users, products, payments, revenue, messages };

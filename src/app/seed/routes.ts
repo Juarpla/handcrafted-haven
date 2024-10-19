@@ -1,4 +1,4 @@
-import {db} from "@vercel/postgres";
+import { db } from "@vercel/postgres";
 import bcrypt from "bcrypt";
 import {
   messages,
@@ -11,7 +11,7 @@ import {
 const client = await db.connect();
 
 async function seedUsers() {
-  // Crear tabla de usuarios
+  // Create the users table
   await client.sql`CREATE TABLE IF NOT EXISTS users (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -36,7 +36,7 @@ async function seedUsers() {
 }
 
 async function seedProducts() {
-  // Crear tabla de productos
+  // Create the products table
   await client.sql`CREATE TABLE IF NOT EXISTS products (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -60,7 +60,7 @@ async function seedProducts() {
 }
 
 async function seedPayments() {
-  // Crear tabla de pagos
+  // Create the payments table
   await client.sql`CREATE TABLE IF NOT EXISTS payments (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     user_id UUID NOT NULL,
@@ -83,7 +83,7 @@ async function seedPayments() {
 }
 
 async function seedMessages() {
-  // Crear tabla de mensajes
+  // Create the messages table
   await client.sql`CREATE TABLE IF NOT EXISTS messages (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     user_id UUID NOT NULL,
@@ -105,7 +105,7 @@ async function seedMessages() {
 }
 
 async function seedRevenue() {
-  // Crear tabla de revenue
+  // Create the revenue table
   await client.sql`
     CREATE TABLE IF NOT EXISTS revenue (
       month VARCHAR(4) NOT NULL UNIQUE,
@@ -136,13 +136,13 @@ export async function GET() {
     await seedRevenue();
     await client.sql`COMMIT`;
 
-    return Response.json({message: "Database seeded successfully"});
+    return Response.json({ message: "Database seeded successfully" });
   } catch (error) {
     await client.sql`ROLLBACK`;
-    console.error("Seeding Error:", error); // Registro detallado del error
+    console.error("Seeding Error:", error); // Detailed error log
     return Response.json(
-      {error: "Failed to seed the database. Please try again later."},
-      {status: 500}
+      { error: "Failed to seed the database. Please try again later." },
+      { status: 500 }
     );
   }
 }
