@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image"; // Import Image from next/image
 import React, {useState} from "react";
 
 const SettingsPage: React.FC = () => {
@@ -51,11 +52,15 @@ const SettingsPage: React.FC = () => {
             className="block"
           />
           {photo && (
-            <img
-              src={photo}
-              alt="Profile"
-              className="mt-4 h-24 w-24 rounded-full"
-            />
+            <div className="mt-4">
+              <Image
+                src={photo} // Use the Image component for optimized loading
+                alt="Profile"
+                className="size-24 rounded-full"
+                width={96} // Set the width for the Image component
+                height={96} // Set the height for the Image component
+              />
+            </div>
           )}
         </div>
 

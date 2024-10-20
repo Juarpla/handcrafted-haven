@@ -82,7 +82,7 @@ const MyAccountPage: React.FC = () => {
             <div className="mb-6 flex items-center">
               {" "}
               {/* Profile info */}
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gray-300">
+              <div className="flex size-16 items-center justify-center rounded-full bg-gray-300">
                 {" "}
                 {/* Placeholder for profile picture */}
                 <span>No Photo</span> {/* Placeholder text */}

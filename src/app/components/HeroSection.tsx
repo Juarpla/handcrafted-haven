@@ -9,7 +9,7 @@ const HeroSection = () => {
   return (
     <div className="relative flex flex-col items-center justify-center py-16">
       {/* Background image */}
-      <div className="absolute inset-0 z-[-10] opacity-70">
+      <div className="absolute inset-0 z-10 opacity-70">
         <Image
           src={Hero}
           alt="Background Hero"
@@ -31,7 +31,7 @@ const HeroSection = () => {
 
       {/* Image Container */}
       <div className="relative z-10 hidden gap-4 md:flex">
-        <div className="relative h-60 w-60 overflow-hidden rounded-lg">
+        <div className="relative size-60 overflow-hidden rounded-lg">
           <Image
             src={Handcrafted}
             alt="Handcrafted Pottery"
@@ -39,7 +39,7 @@ const HeroSection = () => {
             objectFit="cover"
           />
         </div>
-        <div className="relative h-60 w-60 overflow-hidden rounded-lg">
+        <div className="relative size-60 overflow-hidden rounded-lg">
           <Image
             src={Handmadetex}
             alt="Handmade Textile"
@@ -47,7 +47,7 @@ const HeroSection = () => {
             objectFit="cover"
           />
         </div>
-        <div className="relative h-60 w-60 overflow-hidden rounded-lg">
+        <div className="relative size-60 overflow-hidden rounded-lg">
           <Image
             src={Woven}
             alt="Woven Basket"
