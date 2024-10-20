@@ -1,6 +1,6 @@
 import React from "react";
-import {playfairDisplay, raleway} from "../fonts";
-import Navigation from "../Navigation";
+import {playfairDisplay} from "../fonts";
+//import Navigation from "../Navigation";
 import ProductImages from "./ProductImages";
 
 export default function Products() {

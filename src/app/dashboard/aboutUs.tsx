@@ -1,5 +1,4 @@
 import {playfairDisplay, raleway} from "@/app/ui/fonts";
-import Image from "next/image";
 import React from "react";
 
 export default function Aboutus() {

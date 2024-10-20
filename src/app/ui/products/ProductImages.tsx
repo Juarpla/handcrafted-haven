@@ -1,10 +1,11 @@
-import {playfairDisplay} from "@/app/ui/fonts";
+//import {playfairDisplay} from "@/app/ui/fonts";
 import AztecNecklace from "/src/public/images/aztecNecklace.jpg";
 import Pottery from "/src/public/images/HandcraftedPottery.webp";
 import Textile from "/src/public/images/Handmade Textile.webp";
 import HandwovenScarf from "/src/public/images/handwovenScarf.webp";
 import Image from "next/image";
-import React, {useEffect, useState} from "react";
+
+//import React, {useEffect, useState} from "react";
 
 // const Images = () => {
 //     const [images, setImages] = useState([]);
