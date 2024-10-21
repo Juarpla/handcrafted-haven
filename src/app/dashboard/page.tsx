@@ -1,15 +1,13 @@
-/* eslint-disable */
-
 "use client";
 
+import MyAccountPage from "@/app/components/MyAccountPage";
+import AboutUs from "@/app/dashboard/aboutUs";
 import {playfairDisplay} from "@/app/ui/fonts";
+import Navigation from "@/app/ui/layout/Navigation";
+import LogoutButton from "@/app/ui/logoutButton";
 import {useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
 import React, {useEffect} from "react";
-import MyAccountPage from "../components/MyAccountPage";
-import LogoutButton from "../ui/logoutbutton";
-import Navigation from "../ui/Navigation";
-import Aboutus from "./aboutUs";
 
 export default function Page() {
   const {data: session, status} = useSession(); // Get session status
@@ -39,7 +37,7 @@ export default function Page() {
           <div className="flex justify-center">
             <Navigation /> {/* You can add navigation here */}
           </div>
-          <Aboutus />
+          <AboutUs />
           <MyAccountPage /> {/* Replace with your own MyAccount component */}
           <LogoutButton />
         </main>

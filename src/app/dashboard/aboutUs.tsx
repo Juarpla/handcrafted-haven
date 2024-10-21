@@ -1,7 +1,7 @@
 import {playfairDisplay, raleway} from "@/app/ui/fonts";
 import React from "react";
 
-export default function Aboutus() {
+export default function AboutUs() {
   return (
     <div className={"m-6 rounded border border-gray-300 p-4"}>
       <h1

@@ -1,13 +1,8 @@
-/* eslint-disable */
-
 "use client";
 
-// Mark this as a Client Component
-import type {Metadata} from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import {SessionProvider} from "next-auth/react"; // Import SessionProvider
-import Navigation from "./ui/Navigation";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,7 +28,6 @@ export default function RootLayout({
         <SessionProvider>
           {" "}
           {/* Wrap your app with SessionProvider */}
-          <Navigation />
           {children}
         </SessionProvider>
       </body>

@@ -1,6 +1,6 @@
-import jose from "/src/public/images/jose.webp"; // Import estático
-import monica from "/src/public/images/monica.webp"; // Import estático
-import sabrina from "/src/public/images/sabrina.webp"; // Import estático
+import jose from "/src/public/images/jose.webp";
+import monica from "/src/public/images/monica.webp";
+import sabrina from "/src/public/images/sabrina.webp";
 import Image from "next/image";
 
 const SatisfiedClients = () => {
@@ -9,19 +9,19 @@ const SatisfiedClients = () => {
       name: "Sabrina Purdue",
       feedback:
         "The handcrafted textile from the loom fits perfectly in my home, and the quality is outstanding.",
-      imgSrc: sabrina, // Uso de la variable importada
+      imgSrc: sabrina,
     },
     {
       name: "Mónica Ortiz",
       feedback:
         "The ceramic piece was a great purchase; it beautifully decorates my living room and adds a special touch.",
-      imgSrc: monica, // Uso de la variable importada
+      imgSrc: monica,
     },
     {
       name: "Jose Miranda",
       feedback:
         "The handmade baskets are very practical in my home and help me stay organized.",
-      imgSrc: jose, // Uso de la variable importada
+      imgSrc: jose,
     },
   ];
 
@@ -35,7 +35,7 @@ const SatisfiedClients = () => {
             className="w-64 rounded-lg bg-gray-100 p-4 text-left"
           >
             <Image
-              src={client.imgSrc} // Usar variable importada en lugar de ruta relativa
+              src={client.imgSrc}
               alt={client.name}
               width={250}
               height={250}
