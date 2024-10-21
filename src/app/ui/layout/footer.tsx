@@ -1,4 +1,4 @@
-import FooterMenu from "@/app/ui/homepage/footer-menu";
+import FooterMenu from "@/app/ui/layout/footer-menu";
 import Logos from "@/app/ui/logos.webp";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,12 +26,16 @@ export default async function Footer() {
       path: "/",
     },
     {
-      title: "Sellers",
-      path: "/",
+      title: "Products",
+      path: "/products",
     },
     {
-      title: "Dashboard",
-      path: "/",
+      title: "Sellers",
+      path: "/sellers",
+    },
+    {
+      title: "Login",
+      path: "/dashboard/login",
     },
   ];
 
@@ -69,12 +73,12 @@ export default async function Footer() {
         <div className="md:ml-auto">
           <a
             className="flex h-8 w-max flex-none items-center justify-center rounded-md border border-neutral-200 bg-white text-xs text-black dark:border-neutral-700 dark:bg-black dark:text-white"
-            aria-label="Deploy on Vercel"
-            href="https://vercel.com/templates/next.js/nextjs-commerce"
+            aria-label="Remote Repository"
+            href="https://github.com/Juarpla/handcrafted-haven"
           >
             <span className="px-3">▲</span>
             <hr className="h-full border-r border-neutral-200 dark:border-neutral-700" />
-            <span className="px-3">Deploy</span>
+            <span className="px-3">GitHub</span>
           </a>
         </div>
       </div>
@@ -87,12 +91,17 @@ export default async function Footer() {
               : ""}{" "}
             All rights reserved.
           </p>
-          <hr className="mx-4 hidden h-4 w-[1px] border-l border-neutral-400 md:inline-block" />
+          <hr className="mx-4 hidden h-4 w-px border-l border-neutral-400 md:inline-block" />
           <p>
-            <a href="https://github.com/vercel/commerce">View the source</a>
+            <a href="https://github.com/users/Juarpla/projects/3/views/1">
+              View Project Status
+            </a>
           </p>
           <p className="md:ml-auto">
-            <a href="https://vercel.com" className="text-black dark:text-white">
+            <a
+              href="https://github.com/Juarpla/handcrafted-haven/blob/main/README.md"
+              className="text-black dark:text-white"
+            >
               Created by ▲ Group 7 - WDD430
             </a>
           </p>

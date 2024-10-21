@@ -1,19 +1,15 @@
-import HeroSection from "@/app/components/HeroSection";
-import SatisfiedClients from "@/app/components/SatisfiedClients";
-import Footer from "@/app/ui/homepage/footer";
-import Navigation from "@/app/ui/layout/Navigation";
-import Promotional from "@/components/promotionalProducts";
+import HeroSection from "@/app/ui/home/HeroSection";
+import Promotional from "@/app/ui/home/promotionalProducts";
+import SatisfiedClients from "@/app/ui/home/SatisfiedClients";
 import React from "react";
 
 export default function Home() {
   return (
     <>
       <main>
-        <Navigation />
         <HeroSection />
         <Promotional />
         <SatisfiedClients />
-        <Footer />
       </main>
     </>
   );
