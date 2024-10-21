@@ -1,4 +1,4 @@
-import Settings from "@/app/components/Settings";
+import Settings from "@/app/ui/dashboard/Settings";
 
 export default function page() {
   return (

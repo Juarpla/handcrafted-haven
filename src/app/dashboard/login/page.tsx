@@ -16,7 +16,7 @@ export default function Page() {
 
   return (
     <div className="flex min-h-screen items-center justify-center">
-      <div className="mx-auto flex h-96 max-h-full w-96 max-w-sm flex-col items-center justify-center justify-between space-y-9 rounded-lg bg-white p-9 shadow-lg">
+      <div className="mx-auto flex h-96 max-h-full w-96 max-w-sm flex-col items-center justify-center space-y-9 rounded-lg bg-white p-9 shadow-lg">
         <h1
           className={`${playfairDisplay.className} mb-4 text-center text-4xl font-bold text-gray-500`}
         >

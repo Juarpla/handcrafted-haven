@@ -1,9 +1,8 @@
 "use client";
 
-import MyAccountPage from "@/app/components/MyAccountPage";
-import AboutUs from "@/app/dashboard/aboutUs";
+import AboutUs from "@/app/ui/dashboard/aboutUs";
+import MyAccountPage from "@/app/ui/dashboard/MyAccountPage";
 import {playfairDisplay} from "@/app/ui/fonts";
-import Navigation from "@/app/ui/layout/Navigation";
 import LogoutButton from "@/app/ui/logoutButton";
 import {useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
@@ -34,9 +33,6 @@ export default function Page() {
           >
             Welcome, {session.user?.name}!
           </h1>
-          <div className="flex justify-center">
-            <Navigation /> {/* You can add navigation here */}
-          </div>
           <AboutUs />
           <MyAccountPage /> {/* Replace with your own MyAccount component */}
           <LogoutButton />

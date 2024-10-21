@@ -22,7 +22,7 @@ export default function Navigation() {
           <div className="flex space-x-4">
             <Link
               className="flex items-center justify-center rounded-md px-3 py-2 text-lg font-bold text-white transition duration-500 hover:bg-gray-800 hover:bg-opacity-90 hover:text-white"
-              href="./ui/products"
+              href="/products"
             >
               Products
             </Link>

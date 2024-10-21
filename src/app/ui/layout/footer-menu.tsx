@@ -1,6 +1,6 @@
 "use client";
 
-import {Menu, MenuItem} from "@/app/ui/homepage/footer";
+import {Menu, MenuItem} from "@/app/ui/layout/footer";
 import Link from "next/link";
 import {usePathname} from "next/navigation";
 import {useEffect, useState} from "react";

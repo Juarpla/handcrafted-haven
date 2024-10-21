@@ -1,4 +1,4 @@
-import Followers from "@/app/components/Followers";
+import Followers from "@/app/ui/dashboard/Followers";
 
 export default function page() {
   return (

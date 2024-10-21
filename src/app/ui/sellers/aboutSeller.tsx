@@ -1,7 +1,7 @@
 "use client";
 
 //import React, {useActionState} from "react";
-import {raleway} from "../ui/fonts";
+import {raleway} from "@/app/ui/fonts";
 
 export default function aboutForm() {
   return (
