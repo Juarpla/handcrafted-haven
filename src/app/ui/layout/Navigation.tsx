@@ -8,7 +8,7 @@ export default function Navigation() {
     <>
       <nav className="fixed top-0 z-50 flex h-auto w-full items-center justify-between bg-custom-orange bg-opacity-100 px-4 py-2 shadow-md">
         <div className="container mx-auto flex items-center justify-between">
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <Link href={"/"}>
               <Image
                 src={Logos}
