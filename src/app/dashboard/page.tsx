@@ -34,8 +34,7 @@ export default function Page() {
             Welcome, {session.user?.name}!
           </h1>
           <AboutUs />
-          <MyAccountPage /> {/* Replace with your own MyAccount component */}
-          <LogoutButton />
+          <MyAccountPage userName={session.user?.name} /> {/* Replace with your own MyAccount component */}
         </main>
       </>
     );

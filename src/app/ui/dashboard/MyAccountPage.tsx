@@ -27,6 +27,9 @@ const links = [
   {name: "My Earnings", href: "/account/earnings", icon: CurrencyDollarIcon},
 ];
 
+interface MyAccountProps {
+  userName: string
+}
 // Function to render sidebar links
 function SidebarLinks() {
   const pathname = usePathname(); // Get the current pathname from Next.js
@@ -39,7 +42,7 @@ function SidebarLinks() {
             key={link.name} // Unique key for each link
             href={link.href} // Link to the specific path
             className={clsx(
-              "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3",
+              "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3 text-black",
               {
                 "bg-sky-100 text-blue-600": pathname === link.href, // Apply specific styles if the current pathname matches the link's href
               }
@@ -56,9 +59,9 @@ function SidebarLinks() {
 }
 
 // Main account page component
-const MyAccountPage: React.FC = () => {
+const MyAccountPage: React.FC<MyAccountProps> = ({userName}) => {
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-gray-100 p-6 text-black">
       {" "}
       {/* Main container with background and padding */}
       <div className="mx-auto max-w-6xl overflow-hidden rounded-lg bg-white shadow-md">
@@ -88,7 +91,7 @@ const MyAccountPage: React.FC = () => {
                 <span>No Photo</span> {/* Placeholder text */}
               </div>
               <div className="ml-4">
-                <h2 className="text-2xl font-bold">Alexander Chagua</h2>{" "}
+                <h2 className="text-2xl font-bold">{userName}</h2>{" "}
                 {/* User name */}
               </div>
             </div>
