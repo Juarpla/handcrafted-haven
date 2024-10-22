@@ -1,5 +1,6 @@
 import {playfairDisplay} from "@/app/ui/fonts";
 import ProductImages from "@/app/ui/products/ProductImages";
+import React from "react";
 
 export default function Products() {
   return (
