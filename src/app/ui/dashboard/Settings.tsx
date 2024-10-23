@@ -1,79 +1,56 @@
-"use client";
+/* eslint-disable prettier/prettier */
+import React from "react";
+import Sidebar from "./sidebar";
 
-import Image from "next/image"; // Import Image from next/image
-import React, {useState} from "react";
-
-const SettingsPage: React.FC = () => {
-  const [name, setName] = useState("Alexander Chagua");
-  const [photo, setPhoto] = useState<string | null>(null); // Adjusted state type
-
-  // Handles changes to the name input field
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
-  };
-
-  // Handles file selection for profile photo
-  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const reader = new FileReader();
-      reader.onload = () => setPhoto(reader.result as string); // Converts file to a data URL
-      reader.readAsDataURL(e.target.files[0]);
-    }
-  };
-
-  // Saves the changes made to name and photo
-  const handleSave = () => {
-    alert("Changes saved successfully.");
-  };
-
+const MyAccountPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      <div className="mx-auto max-w-4xl overflow-hidden rounded-lg bg-white p-6 shadow-md">
-        <h2 className="mb-6 text-2xl font-bold">Account Settings</h2>
-
-        {/* Name input field */}
-        <div className="mb-4">
-          <label className="mb-2 block font-medium">Name</label>
-          <input
-            type="text"
-            value={name}
-            onChange={handleNameChange}
-            className="w-full rounded-md border p-2"
-          />
-        </div>
-
-        {/* Profile photo upload */}
-        <div className="mb-4">
-          <label className="mb-2 block font-medium">Profile Photo</label>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handlePhotoChange}
-            className="block"
-          />
-          {photo && (
-            <div className="mt-4">
-              <Image
-                src={photo} // Use the Image component for optimized loading
-                alt="Profile"
-                className="size-24 rounded-full"
-                width={96} // Set the width for the Image component
-                height={96} // Set the height for the Image component
-              />
+      <div className="mx-auto max-w-6xl overflow-hidden rounded-lg bg-white shadow-md">
+        <div className="flex">
+          {/* Sidebar */}
+          <Sidebar /> {/* Use the Sidebar component here */}
+          {/* Main Content */}
+          <div className="w-3/4 p-6">
+            <div className="mb-6 flex items-center">
+              <div className="flex size-16 items-center justify-center rounded-full bg-gray-300">
+                <span>No Photo</span>
+              </div>
+              <div className="ml-4">
+                <h2 className="text-2xl font-bold">Alexander Chagua</h2>
+              </div>
             </div>
-          )}
+            <div className="mb-6">
+              <div className="grid grid-cols-4 gap-4">
+                <div className="rounded bg-orange-200 p-4 text-center">
+                  <span>Pending Payment</span>
+                </div>
+                <div className="rounded bg-orange-200 p-4 text-center">
+                  <span>Pending Shipment</span>
+                </div>
+                <div className="rounded bg-orange-200 p-4 text-center">
+                  <span>Shipped</span>
+                </div>
+                <div className="rounded bg-orange-200 p-4 text-center">
+                  <span>Pending Review</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 className="mb-4 text-xl font-bold">Orders</h3>
+              <ul className="space-y-2">
+                <li className="cursor-pointer rounded bg-gray-100 p-4 hover:bg-gray-200">
+                  Appeals
+                </li>
+                <li className="cursor-pointer rounded bg-gray-100 p-4 hover:bg-gray-200">
+                  Refunds and Returns
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-
-        {/* Save button */}
-        <button
-          onClick={handleSave}
-          className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
-        >
-          Save Changes
-        </button>
       </div>
     </div>
   );
 };
 
-export default SettingsPage;
+export default MyAccountPage;
