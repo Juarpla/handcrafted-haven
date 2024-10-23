@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 "use client";
 
 import AboutUs from "@/app/ui/dashboard/aboutUs";

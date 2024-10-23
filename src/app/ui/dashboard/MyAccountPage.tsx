@@ -1,12 +1,22 @@
 /* eslint-disable prettier/prettier */
-// src/app/components/MyAccountPage.tsx
+
+// {name: "My Earnings", href: "/account/earnings", icon: CurrencyDollarIcon},
+// ];
+
+// interface MyAccountProps {
+//   userName: string;
+// }
+
+interface MyAccountPropsOptional {
+  userName?: string;
+}
 
 import React from "react";
 import Sidebar from "./sidebar";
 
-const MyAccountPage: React.FC = () => {
+const MyAccountPage: React.FC<MyAccountPropsOptional> = ({userName = "Guest"}) => {
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-gray-100 p-6 text-black">
       <div className="mx-auto max-w-6xl overflow-hidden rounded-lg bg-white shadow-md">
         <div className="flex">
           {/* Sidebar */}
@@ -18,7 +28,7 @@ const MyAccountPage: React.FC = () => {
                 <span>No Photo</span>
               </div>
               <div className="ml-4">
-                <h2 className="text-2xl font-bold">Username</h2>
+                <h2 className="text-2xl font-bold">{userName}</h2>
               </div>
             </div>
             <div className="mb-6">
