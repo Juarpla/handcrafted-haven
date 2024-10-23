@@ -27,8 +27,12 @@ const links = [
   {name: "My Earnings", href: "/account/earnings", icon: CurrencyDollarIcon},
 ];
 
-interface MyAccountProps {
-  userName: string
+// interface MyAccountProps {
+//   userName: string;
+// }
+
+interface MyAccountPropsOptional {
+  userName?: string;
 }
 // Function to render sidebar links
 function SidebarLinks() {
@@ -59,7 +63,7 @@ function SidebarLinks() {
 }
 
 // Main account page component
-const MyAccountPage: React.FC<MyAccountProps> = ({userName}) => {
+const MyAccountPage: React.FC<MyAccountPropsOptional> = ({userName = "Guest"}) => {
   return (
     <div className="min-h-screen bg-gray-100 p-6 text-black">
       {" "}
