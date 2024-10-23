@@ -12,6 +12,7 @@ export const authOptions = {
   pages: {
     signIn: "/login", // Custom login page
   },
+  secret: process.env.NEXTAUTH_SECRET as string,
   callbacks: {
     async redirect({url, baseUrl}: {url: string; baseUrl: string}) {
       // Always redirect to /dashboard after login

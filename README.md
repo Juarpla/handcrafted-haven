@@ -44,7 +44,6 @@ This project is to build this web application using Next.js, testing our ability
 - Leo Masquera
 - Juan Plasencia
 - Matthew Perkins
-- Hector Rojas
 
 ## Deploy on Vercel
 
