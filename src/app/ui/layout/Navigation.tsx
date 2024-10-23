@@ -1,9 +1,14 @@
-import {Button} from "@/app/ui/button";
+import { Button } from "@/app/ui/button";
 import Logos from "@/app/ui/logos.webp";
 import Image from "next/image";
 import Link from "next/link";
+import LogoutButton from "../logoutButton";
+import { useEffect } from "react";
+import { useSession, signOut } from "next-auth/react";
 
 export default function Navigation() {
+  const { data: session, status } = useSession();
+  
   return (
     <>
       <nav className="fixed top-0 z-50 flex h-auto w-full items-center justify-between bg-custom-orange bg-opacity-100 px-4 py-2 shadow-md">
@@ -33,12 +38,16 @@ export default function Navigation() {
               Sellers
             </Link>
 
-            <Link
-              className="flex items-center justify-center rounded-md px-1 py-2 text-lg font-bold text-black transition duration-500"
-              href="/dashboard/login"
-            >
-              <Button>Login</Button>
-            </Link>
+            {status === "authenticated" ? (
+              <LogoutButton/>
+            ) : (
+              <Link
+                className="flex items-center justify-center rounded-md px-1 py-2 text-lg font-bold text-black transition duration-500"
+                href="/dashboard/login"
+              >
+                <Button>Login</Button>
+              </Link>
+            )}
           </div>
         </div>
       </nav>
