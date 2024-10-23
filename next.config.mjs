@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-import path from 'path';
+import path from "path";
 
 const nextConfig = {
   eslint: {
