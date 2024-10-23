@@ -1,5 +1,5 @@
 import {sql} from "@vercel/postgres";
-import {Follower, Product, Sale, UsersHaven} from "./definitions";
+import {Follower, Product, Sale, Salers} from "./definitions";
 import {formatCurrency} from "./utils";
 
 // Function to fetch products
@@ -18,7 +18,7 @@ export async function fetchProducts() {
 export async function fetchUsers() {
   try {
     const data =
-      await sql<UsersHaven>`SELECT id, name, profile_picture FROM users ORDER BY name ASC`;
+      await sql<Salers>`SELECT id, name, profile_picture FROM users ORDER BY name ASC`;
     return data.rows;
   } catch (error) {
     console.error("Database Error:", error);
@@ -27,12 +27,12 @@ export async function fetchUsers() {
 }
 
 // Function to update user data
-export async function updateUser(id: string, updates: Partial<UsersHaven>) {
+export async function updateUser(id: string, updates: Partial<Salers>) {
   const {name, email, profile_picture} = updates;
 
   try {
     await sql`
-        UPDATE users
+        UPDATE Salers
         SET
           name = COALESCE(${name}, name),
           email = COALESCE(${email}, email),
@@ -53,11 +53,11 @@ export async function fetchFollowers(userId: string) {
       SELECT 
         followers.id, 
         followers.follower_id, 
-        users.name AS follower_name, 
-        users.profile_picture AS follower_image,
+        salers.name AS follower_name, 
+        salers.profile_picture AS follower_image,
         followers.follow_date
       FROM followers
-      JOIN users ON followers.follower_id = users.id
+      JOIN salers ON followers.follower_id = salers.id
       WHERE followers.user_id = ${userId}
     `;
     return data.rows;
@@ -74,7 +74,7 @@ export async function fetchSales() {
       SELECT 
         id, 
         product_id, 
-        user_id, 
+        saler_id, 
         amount, 
         status, 
         date
