@@ -18,7 +18,7 @@ const MyAccountPage: React.FC = () => {
                 <span>No Photo</span>
               </div>
               <div className="ml-4">
-                <h2 className="text-2xl font-bold">Alexander Chagua</h2>
+                <h2 className="text-2xl font-bold">Username</h2>
               </div>
             </div>
             <div className="mb-6">
