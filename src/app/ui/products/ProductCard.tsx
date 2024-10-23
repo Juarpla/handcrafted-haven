@@ -1,11 +1,12 @@
 import Image from "next/image";
+import type {StaticImageData} from "next/image";
 import React from "react";
 
 type ProductProps = {
   id: number;
   name: string;
   price: number;
-  image: string;
+  image: string | StaticImageData; // Ajuste para aceptar ambos tipos
   onAddToCart: (id: number) => void;
 };
 
@@ -23,6 +24,8 @@ const ProductCard: React.FC<ProductProps> = ({
           src={image}
           alt={name}
           className="mb-2 h-48 w-full rounded-lg object-cover"
+          width={300} // Ajusta el tamaño según sea necesario
+          height={200} // Ajusta el tamaño según sea necesario
         />
         <h2 className="text-lg font-semibold">{name}</h2>
       </a>
