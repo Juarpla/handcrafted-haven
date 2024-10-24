@@ -19,13 +19,13 @@ const ProductCard: React.FC<ProductProps> = ({
 }) => {
   return (
     <div className="rounded-lg border p-4 text-center">
-      <a href={`/product/${id}`} className="cursor-pointer">
+      <a href={`/products/${id}`} className="cursor-pointer">
         <Image
           src={image}
           alt={name}
           className="mb-2 h-48 w-full rounded-lg object-cover"
-          width={300} // Ajusta el tamaño según sea necesario
-          height={200} // Ajusta el tamaño según sea necesario
+          width={300}
+          height={200}
         />
         <h2 className="text-lg font-semibold">{name}</h2>
       </a>
