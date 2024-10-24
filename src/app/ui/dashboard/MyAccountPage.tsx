@@ -1,10 +1,12 @@
+;
+
 /* eslint-disable prettier/prettier */
 // src/app/components/MyAccountPage.tsx
 
 import React from "react";
 import Sidebar from "./sidebar";
 
-const MyAccountPage: React.FC = () => {
+const MyAccountPage = ({ userName }: { userName: string }) => {
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="mx-auto max-w-6xl overflow-hidden rounded-lg bg-white shadow-md">
@@ -18,7 +20,7 @@ const MyAccountPage: React.FC = () => {
                 <span>No Photo</span>
               </div>
               <div className="ml-4">
-                <h2 className="text-2xl font-bold">Alexander Chagua</h2>
+                <h2 className="text-2xl font-bold">{userName}</h2>
               </div>
             </div>
             <div className="mb-6">
