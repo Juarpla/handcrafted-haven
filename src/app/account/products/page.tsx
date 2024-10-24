@@ -1,8 +1,8 @@
 /* eslint-disable */
 "use client";
 
-import React, { useState } from "react";
 import Sidebar from "@/app/ui/dashboard/sidebar";
+import React, {useState} from "react";
 
 export default function ProductsPage() {
   const [productData, setProductData] = useState<{
@@ -15,14 +15,16 @@ export default function ProductsPage() {
     price: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setProductData({ ...productData, [name]: value });
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const {name, value} = e.target;
+    setProductData({...productData, [name]: value});
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
-    setProductData({ ...productData, image: file });
+    setProductData({...productData, image: file});
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -39,15 +41,17 @@ export default function ProductsPage() {
         <div className="flex">
           {/* Sidebar */}
           <Sidebar /> {/* Render Sidebar directly here */}
-
           {/* Main Content */}
           <div className="w-3/4 p-6">
-            <h1 className="text-2xl font-bold mb-6">Add New Product</h1>
+            <h1 className="mb-6 text-2xl font-bold">Add New Product</h1>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Image Upload */}
               <div>
-                <label htmlFor="image" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="image"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Product Image
                 </label>
                 <input
@@ -55,14 +59,17 @@ export default function ProductsPage() {
                   name="image"
                   accept="image/*"
                   onChange={handleImageChange}
-                  className="mt-2 block w-full p-2 border border-gray-300 rounded-md"
+                  className="mt-2 block w-full rounded-md border border-gray-300 p-2"
                   required
                 />
               </div>
 
               {/* Product Description */}
               <div>
-                <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="description"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Product Description
                 </label>
                 <textarea
@@ -70,14 +77,17 @@ export default function ProductsPage() {
                   rows={4}
                   value={productData.description}
                   onChange={handleInputChange}
-                  className="mt-2 block w-full p-2 border border-gray-300 rounded-md"
+                  className="mt-2 block w-full rounded-md border border-gray-300 p-2"
                   required
                 />
               </div>
 
               {/* Product Price */}
               <div>
-                <label htmlFor="price" className="block text-sm font-medium text-gray-700">
+                <label
+                  htmlFor="price"
+                  className="block text-sm font-medium text-gray-700"
+                >
                   Price ($)
                 </label>
                 <input
@@ -86,7 +96,7 @@ export default function ProductsPage() {
                   step="0.01"
                   value={productData.price}
                   onChange={handleInputChange}
-                  className="mt-2 block w-full p-2 border border-gray-300 rounded-md"
+                  className="mt-2 block w-full rounded-md border border-gray-300 p-2"
                   required
                 />
               </div>
@@ -94,7 +104,7 @@ export default function ProductsPage() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600"
+                className="w-full rounded-md bg-blue-500 px-4 py-2 font-semibold text-white hover:bg-blue-600"
               >
                 Add Product
               </button>

@@ -4,31 +4,31 @@ import {
   comments,
   followers,
   products,
-  salers,
   sales,
+  users,
 } from "../lib/placeholder-data";
 
 const client = await db.connect();
 
-async function seedSalers() {
+async function seedUsers() {
   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
   await client.sql`
-    CREATE TABLE IF NOT EXISTS salers (
-  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  email TEXT NOT NULL UNIQUE, -- Esta columna ya tiene restricción UNIQUE
-  password TEXT NOT NULL,
-  profile_picture TEXT NOT NULL
-);
+    CREATE TABLE IF NOT EXISTS users (
+      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      email TEXT NOT NULL UNIQUE, -- This column already has UNIQUE constraint
+      password TEXT NOT NULL,
+      profile_picture TEXT NOT NULL
+    );
   `;
 
   const insertedUsers = await Promise.all(
-    salers.map(async saler => {
-      const hashedPassword = await bcrypt.hash(saler.password, 10);
+    users.map(async user => {
+      const hashedPassword = await bcrypt.hash(user.password, 10);
       return client.sql`
-        INSERT INTO salers (name, email, password, profile_picture)
-        VALUES (${saler.name}, ${saler.email}, ${hashedPassword}, ${saler.profile_picture})
+        INSERT INTO users (name, email, password, profile_picture)
+        VALUES (${user.name}, ${user.email}, ${hashedPassword}, ${user.profile_picture})
         ON CONFLICT (email) DO NOTHING;
       `;
     })
@@ -41,14 +41,14 @@ async function seedProducts() {
   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
   await client.sql`
-   CREATE TABLE IF NOT EXISTS products (
-  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-  productname VARCHAR(255) NOT NULL UNIQUE, -- Añadir UNIQUE aquí
-  description TEXT NOT NULL,
-  price INT NOT NULL,
-  image_url TEXT NOT NULL,
-  stock_quantity INT NOT NULL
-);
+    CREATE TABLE IF NOT EXISTS products (
+      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      productname VARCHAR(255) NOT NULL UNIQUE, -- Add UNIQUE here
+      description TEXT NOT NULL,
+      price INT NOT NULL,
+      image_url TEXT NOT NULL,
+      stock_quantity INT NOT NULL
+    );
   `;
 
   const insertedProducts = await Promise.all(
@@ -145,7 +145,7 @@ async function seedComments() {
 export async function GET() {
   try {
     await client.sql`BEGIN`;
-    await seedSalers();
+    await seedUsers();
     await seedProducts();
     await seedFollowers();
     await seedSales();
