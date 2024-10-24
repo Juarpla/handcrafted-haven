@@ -1,33 +1,33 @@
-import {Comment, Follower, Product, Sale, UsersHaven} from "./definitions";
+import {Comment, Follower, Product, Sale, Salers} from "./definitions";
 
-const users: UsersHaven[] = [
+const salers: Salers[] = [
   {
     id: "5fdc7aaf-d067-4d0a-aeb5-2e7b8317f9b3",
     name: "Alice Johnson",
     email: "alice@example.com",
     password: "securepassword123",
-    profile_picture: "https://example.com/profiles/alice.jpg",
+    profile_picture: "../ui/images/saler2.jpg",
   },
   {
     id: "c87025a3-6182-4b57-8c8a-118b4e567b14",
     name: "Bob Smith",
     email: "bob@example.com",
     password: "anothersecurepassword",
-    profile_picture: "https://example.com/profiles/bob.jpg",
+    profile_picture: "../ui/images/saler1.jpg",
   },
   {
     id: "a7d7f6e2-4567-4b21-bb93-221d8ef5b1e3",
     name: "Charlie Brown",
     email: "charlie@example.com",
     password: "yetanothersecurepassword",
-    profile_picture: "https://example.com/profiles/charlie.jpg",
+    profile_picture: "../ui/images/saler3.jpg",
   },
   {
     id: "d84f76b3-9021-42d2-a3c7-eec8f68a1a34",
-    name: "Diana Prince",
+    name: "Dani Prince",
     email: "diana@example.com",
     password: "supersecurepassword",
-    profile_picture: "https://example.com/profiles/diana.jpg",
+    profile_picture: "../ui/images/saler4.jpg",
   },
 ];
 
@@ -37,7 +37,7 @@ const products: Product[] = [
     productname: "Ceramic Vase",
     description: "Handcrafted ceramic vase with intricate floral designs.",
     price: 45,
-    image_url: "https://example.com/products/ceramic_vase.jpg",
+    image_url: "../ui/images/product 3.jpeg",
     stock_quantity: 30,
   },
   {
@@ -45,7 +45,7 @@ const products: Product[] = [
     productname: "Wooden Jewelry Box",
     description: "Elegant wooden box carved with traditional patterns.",
     price: 55,
-    image_url: "https://example.com/products/jewelry_box.jpg",
+    image_url: "../ui/images/wooden.webp",
     stock_quantity: 40,
   },
   {
@@ -53,7 +53,7 @@ const products: Product[] = [
     productname: "Handwoven Basket",
     description: "Colorful handwoven basket made from natural fibers.",
     price: 20,
-    image_url: "https://example.com/products/basket.jpg",
+    image_url: "../ui/images/product 2.jpeg",
     stock_quantity: 100,
   },
   {
@@ -61,7 +61,7 @@ const products: Product[] = [
     productname: "Pottery Mug Set",
     description: "Set of 4 pottery mugs with unique hand-painted designs.",
     price: 35,
-    image_url: "https://example.com/products/mug_set.jpg",
+    image_url: "../ui/images/pottery.webp",
     stock_quantity: 25,
   },
   {
@@ -69,7 +69,7 @@ const products: Product[] = [
     productname: "Hand-painted Ceramic Plate",
     description: "Decorative ceramic plate with vibrant hand-painted designs.",
     price: 25,
-    image_url: "https://example.com/products/ceramic_plate.jpg",
+    image_url: "../ui/images/handPainted.jpg",
     stock_quantity: 70,
   },
   {
@@ -77,7 +77,7 @@ const products: Product[] = [
     productname: "Woolen Scarf",
     description: "Soft, hand-knitted woolen scarf in various colors.",
     price: 30,
-    image_url: "https://example.com/products/woolen_scarf.jpg",
+    image_url: "../ui/images/woolenscarf.webp",
     stock_quantity: 50,
   },
   {
@@ -85,7 +85,7 @@ const products: Product[] = [
     productname: "Leather Wallet",
     description: "Handcrafted leather wallet with multiple compartments.",
     price: 40,
-    image_url: "https://example.com/products/leather_wallet.jpg",
+    image_url: "../ui/images/leatherWallet.webp",
     stock_quantity: 35,
   },
   {
@@ -93,7 +93,7 @@ const products: Product[] = [
     productname: "Bamboo Cutting Board",
     description: "Durable bamboo cutting board with a smooth finish.",
     price: 18,
-    image_url: "https://example.com/products/cutting_board.jpg",
+    image_url: "../ui/images/bambooCuttingBoard.jpg",
     stock_quantity: 80,
   },
   {
@@ -101,7 +101,7 @@ const products: Product[] = [
     productname: "Handmade Soap Set",
     description: "Set of 3 natural, handmade soaps with organic ingredients.",
     price: 22,
-    image_url: "https://example.com/products/soap_set.jpg",
+    image_url: "../ui/images/handmadesoapset.webp",
     stock_quantity: 90,
   },
 ];
@@ -148,4 +148,4 @@ const comments: Comment[] = [
   },
 ];
 
-export {users, comments, sales, followers, products};
+export {salers, comments, sales, followers, products};

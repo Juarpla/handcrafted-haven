@@ -1,12 +1,10 @@
-;
-
 /* eslint-disable prettier/prettier */
 // src/app/components/MyAccountPage.tsx
 
 import React from "react";
 import Sidebar from "./sidebar";
 
-const MyAccountPage = ({ userName }: { userName: string }) => {
+const MyAccountPage = ({userName}: {userName: string}) => {
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="mx-auto max-w-6xl overflow-hidden rounded-lg bg-white shadow-md">
