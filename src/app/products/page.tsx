@@ -1,6 +1,7 @@
 import {playfairDisplay} from "@/app/ui/fonts";
 import ProductImages from "@/app/ui/products/ProductImages";
 import React from "react";
+import ProductsTable from "./products";
 
 export default function Products() {
   return (
@@ -12,7 +13,7 @@ export default function Products() {
           Our Handmade Products
         </h1>
         <div>
-          <ProductImages />
+          <ProductsTable />
         </div>
       </main>
     </>
