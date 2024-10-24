@@ -6,7 +6,7 @@ import {Button} from "@/app/ui/button";
 import {playfairDisplay, raleway} from "@/app/ui/fonts";
 import {Metadata} from "next";
 import {signIn} from "next-auth/react";
-import { useState } from "react";
+import {useState} from "react";
 
 // export const metadata: Metadata = {
 //   title: 'Login',
@@ -14,7 +14,8 @@ import { useState } from "react";
 
 export default function Page() {
   const handleSignIn = () => {
-    signIn("github", {callbackUrl: "/dashboard"})};
+    signIn("github", {callbackUrl: "/dashboard"});
+  };
 
   return (
     <div className="flex min-h-screen items-center justify-center">

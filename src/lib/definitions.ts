@@ -1,4 +1,4 @@
-export type UsersHaven = {
+export type Salers = {
   id: string;
   name: string;
   email: string;
