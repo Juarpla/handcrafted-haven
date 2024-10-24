@@ -13,15 +13,16 @@ export async function fetchProducts() {
     throw new Error("Failed to fetch products.");
   }
 }
+
 // Function to fetch users
 export async function fetchUsers() {
   try {
     const data =
-      await sql<Salers>`SELECT id, name, profile_picture FROM users ORDER BY name ASC`;
+      await sql<Salers>`SELECT id, name, profile_picture FROM salers ORDER BY name ASC`;
     return data.rows;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch users.");
+    throw new Error("Failed to fetch salers.");
   }
 }
 
@@ -31,13 +32,14 @@ export async function updateUser(id: string, updates: Partial<Salers>) {
 
   try {
     await sql`
-        UPDATE Salers
+        UPDATE users
         SET
           name = COALESCE(${name}, name),
           email = COALESCE(${email}, email),
           profile_picture = COALESCE(${profile_picture}, profile_picture)
         WHERE id = ${id}
       `;
+
     return {message: "User updated successfully"};
   } catch (error) {
     console.error("Database Error:", error);
@@ -55,7 +57,7 @@ export async function fetchFollowers(userId: string) {
         salers.profile_picture AS follower_image,
         followers.follow_date
       FROM followers
-      JOIN salers ON followers.follower_id = salers.id
+      JOIN salers ON followers.follower_id = users.id
       WHERE followers.user_id = ${userId}
     `;
     return data.rows;
@@ -64,6 +66,7 @@ export async function fetchFollowers(userId: string) {
     throw new Error("Failed to fetch followers.");
   }
 }
+
 // Function to fetch sales
 export async function fetchSales() {
   try {
@@ -71,7 +74,7 @@ export async function fetchSales() {
       SELECT 
         id, 
         product_id, 
-        saler_id, 
+        user_id, 
         amount, 
         status, 
         date
