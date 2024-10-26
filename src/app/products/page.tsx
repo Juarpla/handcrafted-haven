@@ -2,6 +2,9 @@ import {playfairDisplay} from "@/app/ui/fonts";
 import ProductImages from "@/app/ui/products/ProductImages";
 import React from "react";
 import ProductsTable from "./products";
+import { fetchProducts } from "../lib/data";
+
+const productData = await fetchProducts();
 
 export default function Products() {
   return (
@@ -13,7 +16,7 @@ export default function Products() {
           Our Handmade Products
         </h1>
         <div>
-          <ProductsTable />
+          <ProductsTable productData={productData}/>
         </div>
       </main>
     </>

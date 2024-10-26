@@ -39,7 +39,14 @@ export default function Navigation() {
             </Link>
 
             {status === "authenticated" ? (
+              <>
+              <Link
+                className="flex items-center justify-center rounded-md px-3 py-2 text-lg font-bold text-white transition duration-500 hover:bg-gray-800 hover:bg-opacity-90 hover:text-white"
+                href="/dashboard"
+              >Profile</Link>
               <LogoutButton/>
+              </>
+              
             ) : (
               <Link
                 className="flex items-center justify-center rounded-md px-1 py-2 text-lg font-bold text-black transition duration-500"
