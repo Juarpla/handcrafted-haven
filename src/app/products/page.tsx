@@ -2,7 +2,7 @@
 import {playfairDisplay} from "@/app/ui/fonts";
 import ProductImages from "@/app/ui/products/ProductImages";
 import React from "react";
-import ProductList from "@/app/ui/products/ProductImages";
+import ProductList from "@/app/ui/products/Products";
 
 export default function Products() {
   return (

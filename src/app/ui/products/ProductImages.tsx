@@ -11,45 +11,7 @@ import HandwovenScarf from "/src/public/images/handwovenScarf.webp";
 import React, {useEffect, useState} from "react";
 import { fetchProducts } from "@/lib/data";
 
-interface Product {
-    id: number;
-    productname: string;
-}
 
-const ProductList = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        // eslint-disable-next-line quotes
-        const response = await fetch('/lib/data');
-        const data = await response.json();
-        console.log(data);
-        setProducts(data);
-      } catch (error) {
-        console.error("Error fetching items:", error);
-      }
-    };
-
-    fetchProduct();
-  }, []);
-
-  return (
-    <div className="grid gap-4 md:grid-cols-4">
-      {products.map((product) => (
-        <div key={product.id} className="p-4 border rounded">
-          <h2 className="text-lg">{product.productname}</h2>
-          <img src="{product.image_url}" alt="image of {product.productname}"></img>
-          <p>{product.description}</p>
-          <p>{product.price}</p>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-export default ProductList;
 
 const products = [
   {id: 1, name: "Product 1", price: 10.99, image: AztecNecklace},
@@ -59,7 +21,7 @@ const products = [
   // Add more products until you have 10
 ];
 
-export function ProductImages() {
+export default function ProductImages() {
   const [cart, setCart] = useState<{id: number; quantity: number}[]>([]);
 
   const handleAddToCart = (id: number) => {
