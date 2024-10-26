@@ -20,11 +20,11 @@ import React from "react";
 const links = [
   {name: "General", href: "/dashboard/", icon: HomeIcon},
   {name: "Settings", href: "/dashboard/settings", icon: CogIcon},
-  {name: "Followers", href: "/dashboard/followers", icon: UserGroupIcon},
-  {name: "Payment", href: "/account/payment", icon: CurrencyDollarIcon},
+  // {name: "Followers", href: "/dashboard/followers", icon: UserGroupIcon},
+  // {name: "Payment", href: "/account/payment", icon: CurrencyDollarIcon},
   {name: "My Products", href: "/account/products", icon: DocumentDuplicateIcon},
-  {name: "Message Center", href: "/account/messages", icon: InboxIcon},
-  {name: "My Earnings", href: "/account/earnings", icon: CurrencyDollarIcon},
+  // {name: "Message Center", href: "/account/messages", icon: InboxIcon},
+  // {name: "My Earnings", href: "/account/earnings", icon: CurrencyDollarIcon},
 ];
 
 // Sidebar component
@@ -42,7 +42,7 @@ const Sidebar: React.FC = () => {
               key={link.name}
               href={link.href}
               className={clsx(
-                "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3",
+                "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3 text-black",
                 {"bg-sky-100 text-blue-600": pathname === link.href}
               )}
             >
