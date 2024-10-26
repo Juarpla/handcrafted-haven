@@ -11,7 +11,9 @@ export async function fetchProducts() {
     return data.rows;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error(`Failed to fetch products. Reason: ${error.message}`);
+    throw new Error(
+      `Failed to fetch products. Reason: ${(error as Error).message}`
+    );
   }
 }
 
@@ -25,7 +27,9 @@ export async function fetchUsers() {
     return data.rows;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error(`Failed to fetch users. Reason: ${error.message}`);
+    throw new Error(
+      `Failed to fetch users. Reason: ${(error as Error).message}`
+    );
   }
 }
 
@@ -46,7 +50,9 @@ export async function updateUser(id: string, updates: Partial<Salers>) {
     return {message: "User updated successfully"};
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error(`Failed to update user data. Reason: ${error.message}`);
+    throw new Error(
+      `Failed to update user data. Reason: ${(error as Error).message}`
+    );
   }
 }
 
@@ -67,7 +73,9 @@ export async function fetchFollowers(userId: string) {
     return data.rows;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error(`Failed to fetch followers. Reason: ${error.message}`);
+    throw new Error(
+      `Failed to fetch followers. Reason: ${(error as Error).message}`
+    );
   }
 }
 
@@ -91,6 +99,8 @@ export async function fetchSales() {
     }));
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error(`Failed to fetch sales. Reason: ${error.message}`);
+    throw new Error(
+      `Failed to fetch sales. Reason: ${(error as Error).message}`
+    );
   }
 }

@@ -6,34 +6,6 @@ import {fetchProducts} from "@/lib/actions";
 import {Product} from "@/lib/definitions";
 import {useEffect, useState} from "react";
 
-//import React, {useEffect, useState} from "react";
-
-// const Images = () => {
-//     const [images, setImages] = useState([]);
-
-//     useEffect(() => {
-//         const fetchImages = async () => {
-//             try {
-//                 const response = await fetchProducts();
-//                 const data = await response.json();
-//                 setImages(data);
-//             } catch (error) {
-//                 console.error('Error fetching images:', error);
-//             }
-//         };
-
-//         fetchImages();
-//     }, []);
-
-//     return (
-//         <div className="grid grid-cols-4 gap-4">
-//             {images.map((image) => (
-//                 <img key={image.id} src={image.img} alt={`Image ${image.description}`}className="w-full h-32 object-cover rounded-md shadow" />
-//             ))}
-//         </div>
-//     );
-// };
-
 interface CartItem {
   id: number;
   quantity: number;
@@ -63,7 +35,7 @@ export default function ProductImages() {
         setProducts(fetchedProducts);
       } catch (error) {
         console.error("Error fetching products:", error);
-        setError("Could not load products. Please try again later."); // Set error message
+        setError("Could not load products. Please try again later.");
       }
     };
 
@@ -82,11 +54,11 @@ export default function ProductImages() {
         {products.map(product => (
           <ProductCard
             key={product.id}
-            id={product.id}
+            productId={parseInt(product.id)} // Convertir a string si es necesario
             name={product.productname}
             price={product.price}
             image={product.image_url}
-            onAddToCart={handleAddToCart}
+            onAddToCart={(id: number) => handleAddToCart(Number(id))} // Convertir el ID a número
           />
         ))}
       </div>

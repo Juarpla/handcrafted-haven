@@ -1,18 +1,20 @@
+"use client";
+
 import {useCart} from "@/app/context/CartContext";
 import Image from "next/image";
 import type {StaticImageData} from "next/image";
 import React from "react";
 
 type ProductProps = {
-  id: number;
+  productId: number; // Cambiado a number
   name: string;
   price: number;
   image: string | StaticImageData;
-  onAddToCart: (id: number) => void;
+  onAddToCart: (id: number) => void; // Cambiado a number
 };
 
 const ProductCard: React.FC<ProductProps> = ({
-  id,
+  productId,
   name,
   price,
   image,
@@ -21,13 +23,13 @@ const ProductCard: React.FC<ProductProps> = ({
   const {addToCart} = useCart();
 
   const handleAddToCart = () => {
-    addToCart({id, name, price, quantity: 1});
-    onAddToCart(id);
+    addToCart({id: productId, name, price, quantity: 1});
+    onAddToCart(productId); // Usar directamente como número
   };
 
   return (
     <div className="rounded-lg border p-4 text-center">
-      <a href={`/product/${id}`} className="cursor-pointer">
+      <a href={`/product/${productId}`} className="cursor-pointer">
         <Image
           src={typeof image === "string" ? image : ""}
           alt={name}
