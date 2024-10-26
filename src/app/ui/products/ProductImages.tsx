@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Pottery from '/src/public/images/HandcraftedPottery.webp';
@@ -5,6 +6,18 @@ import AztecNecklace from '/src/public/images/aztecNecklace.jpg';
 import HandwovenScarf from '/src/public/images/handwovenScarf.webp';
 import Textile from '/src/public/images/Handmade Textile.webp';
 import { playfairDisplay } from '@/app/ui/fonts';
+=======
+"use client";
+
+//import {playfairDisplay} from "@/app/ui/fonts";
+import CartIcon from "@/app/ui/products/CartIcon";
+import ProductCard from "@/app/ui/products/ProductCard";
+import AztecNecklace from "/src/public/images/aztecNecklace.jpg";
+import Pottery from "/src/public/images/HandcraftedPottery.webp";
+import Textile from "/src/public/images/Handmade Textile.webp";
+import HandwovenScarf from "/src/public/images/handwovenScarf.webp";
+import React, {useState} from "react";
+>>>>>>> Stashed changes
 
 // const Images = () => {
 //     const [images, setImages] = useState([]);
