@@ -1,6 +1,17 @@
+/* eslint-disable prettier/prettier */
 import {sql} from "@vercel/postgres";
 import {Follower, Product, Sale, Salers} from "./definitions";
 import {formatCurrency} from "./utils";
+
+export default async function handler(req, res) {
+  try {
+    const { productData } = await sql`SELECT * FROM products;`;
+    res.status(200).json(productData);
+  } catch (error) {
+    console.error("Database connection error:", error);
+    res.status(500).json({ error: "Failed to fetch items"});
+  }
+}
 
 // Function to fetch products
 export async function fetchProducts() {

@@ -1,6 +1,8 @@
+/* eslint-disable prettier/prettier */
 import {playfairDisplay} from "@/app/ui/fonts";
 import ProductImages from "@/app/ui/products/ProductImages";
 import React from "react";
+import ProductList from "@/app/ui/products/ProductImages";
 
 export default function Products() {
   return (
@@ -13,6 +15,7 @@ export default function Products() {
         </h1>
         <div>
           <ProductImages />
+          <ProductList />
         </div>
       </main>
     </>
