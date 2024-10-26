@@ -1,7 +1,7 @@
 import {playfairDisplay} from "@/app/ui/fonts";
-import AztecNecklace from "/src/public/images/aztecNecklace.jpg";
-import Blacksmith from "/src/public/images/blacksmithProducts.webp";
-import HandwovenScarf from "/src/public/images/handwovenScarf.webp";
+import AztecNecklace from "@/public/images/aztecNecklace.jpg";
+import Blacksmith from "@/public/images/blacksmithProducts.webp";
+import HandwovenScarf from "@/public/images/handwovenScarf.webp";
 import Image from "next/image";
 import React from "react";
 

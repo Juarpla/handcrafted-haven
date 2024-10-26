@@ -1,14 +1,10 @@
 "use client";
 
-//import {playfairDisplay} from "@/app/ui/fonts";
 import CartIcon from "@/app/ui/products/CartIcon";
 import ProductCard from "@/app/ui/products/ProductCard";
-import AztecNecklace from "/src/public/images/aztecNecklace.jpg";
-import Pottery from "/src/public/images/HandcraftedPottery.webp";
-import Textile from "/src/public/images/Handmade Textile.webp";
-import HandwovenScarf from "/src/public/images/handwovenScarf.webp";
-// import React, {useEffect, useState} from "react";
-import React, {useState} from "react";
+import {fetchProducts} from "@/lib/actions";
+import {Product} from "@/lib/definitions";
+import {useEffect, useState} from "react";
 
 //import React, {useEffect, useState} from "react";
 
@@ -18,7 +14,7 @@ import React, {useState} from "react";
 //     useEffect(() => {
 //         const fetchImages = async () => {
 //             try {
-//                 const response = await fetch(    our database    );
+//                 const response = await fetchProducts();
 //                 const data = await response.json();
 //                 setImages(data);
 //             } catch (error) {
@@ -38,16 +34,15 @@ import React, {useState} from "react";
 //     );
 // };
 
-const products = [
-  {id: 1, name: "Product 1", price: 10.99, image: AztecNecklace},
-  {id: 2, name: "Product 2", price: 15.99, image: Pottery},
-  {id: 3, name: "Product 3", price: 20.99, image: Textile},
-  {id: 4, name: "Product 4", price: 25.99, image: HandwovenScarf},
-  // Add more products until you have 10
-];
+interface CartItem {
+  id: number;
+  quantity: number;
+}
 
 export default function ProductImages() {
-  const [cart, setCart] = useState<{id: number; quantity: number}[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   const handleAddToCart = (id: number) => {
     setCart(prevCart => {
@@ -60,6 +55,21 @@ export default function ProductImages() {
       return [...prevCart, {id, quantity: 1}];
     });
   };
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        const fetchedProducts = await fetchProducts();
+        setProducts(fetchedProducts);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        setError("Could not load products. Please try again later."); // Set error message
+      }
+    };
+
+    loadProducts();
+  }, []);
+
   return (
     <div className="container mx-auto p-4">
       <div className="mb-4 flex justify-end">
@@ -67,11 +77,15 @@ export default function ProductImages() {
           itemCount={cart.reduce((total, item) => total + item.quantity, 0)}
         />
       </div>
+      {error && <div className="text-red-500">{error}</div>}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {products.map(product => (
           <ProductCard
             key={product.id}
-            {...product}
+            id={product.id}
+            name={product.productname}
+            price={product.price}
+            image={product.image_url}
             onAddToCart={handleAddToCart}
           />
         ))}

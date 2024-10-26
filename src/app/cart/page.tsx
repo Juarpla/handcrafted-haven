@@ -1,46 +1,19 @@
 "use client";
 
+import {useCart} from "@/app/context/CartContext";
 import {useRouter} from "next/navigation";
 import React, {useState} from "react";
 
 export default function CartPage() {
-  const [cart, setCart] = useState([
-    {id: 1, name: "Product 1", price: 10.99, quantity: 2},
-    {id: 2, name: "Product 2", price: 12.99, quantity: 1},
-    {id: 3, name: "Product 3", price: 9.99, quantity: 3},
-    {id: 4, name: "Product 4", price: 15.99, quantity: 1},
-  ]);
-
+  const {cart, increaseQuantity, decreaseQuantity, removeItem} = useCart();
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const router = useRouter();
-
-  const handleIncreaseQuantity = (id: number) => {
-    setCart(prevCart =>
-      prevCart.map(item =>
-        item.id === id ? {...item, quantity: item.quantity + 1} : item
-      )
-    );
-  };
-
-  const handleDecreaseQuantity = (id: number) => {
-    setCart(prevCart =>
-      prevCart.map(item =>
-        item.id === id && item.quantity > 0
-          ? {...item, quantity: item.quantity - 1}
-          : item
-      )
-    );
-  };
-
-  const handleRemoveItem = (id: number) => {
-    setCart(prevCart => prevCart.filter(item => item.id !== id));
-  };
 
   const handlePurchase = () => {
     setShowSuccessMessage(true);
     setTimeout(() => {
       setShowSuccessMessage(false);
-      router.push("/products"); // Redirect to the products page after 5 seconds
+      router.push("/products");
     }, 5000);
   };
 
@@ -58,20 +31,20 @@ export default function CartPage() {
           <span>${item.price.toFixed(2)}</span>
           <div className="flex items-center">
             <button
-              onClick={() => handleDecreaseQuantity(item.id)}
+              onClick={() => decreaseQuantity(item.id)}
               className="rounded bg-red-500 px-2 py-1 text-white hover:bg-red-600"
             >
               -
             </button>
             <span className="mx-2">{item.quantity}</span>
             <button
-              onClick={() => handleIncreaseQuantity(item.id)}
+              onClick={() => increaseQuantity(item.id)}
               className="rounded bg-blue-500 px-2 py-1 text-white hover:bg-blue-600"
             >
               +
             </button>
             <button
-              onClick={() => handleRemoveItem(item.id)}
+              onClick={() => removeItem(item.id)}
               className="ml-4 rounded bg-gray-500 px-2 py-1 text-white hover:bg-gray-600"
             >
               Remove
