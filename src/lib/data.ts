@@ -5,24 +5,31 @@ import {formatCurrency} from "./utils";
 // Function to fetch products
 export async function fetchProducts() {
   try {
-    const data =
-      await sql<Product>`SELECT id, productname, description, price, image_url, stock_quantity FROM products`;
+    const data = await sql<Product>`
+      SELECT id, productname, description, price, image_url, stock_quantity 
+      FROM products`;
     return data.rows;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch products.");
+    throw new Error(
+      `Failed to fetch products. Reason: ${(error as Error).message}`
+    );
   }
 }
 
 // Function to fetch users
 export async function fetchUsers() {
   try {
-    const data =
-      await sql<Salers>`SELECT id, name, profile_picture FROM salers ORDER BY name ASC`;
+    const data = await sql<Salers>`
+      SELECT id, name, profile_picture 
+      FROM salers 
+      ORDER BY name ASC`;
     return data.rows;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch salers.");
+    throw new Error(
+      `Failed to fetch users. Reason: ${(error as Error).message}`
+    );
   }
 }
 
@@ -32,20 +39,23 @@ export async function updateUser(id: string, updates: Partial<Salers>) {
 
   try {
     await sql`
-        UPDATE users
-        SET
-          name = COALESCE(${name}, name),
-          email = COALESCE(${email}, email),
-          profile_picture = COALESCE(${profile_picture}, profile_picture)
-        WHERE id = ${id}
-      `;
+      UPDATE salers
+      SET
+        name = COALESCE(${name}, name),
+        email = COALESCE(${email}, email),
+        profile_picture = COALESCE(${profile_picture}, profile_picture)
+      WHERE id = ${id}
+    `;
 
     return {message: "User updated successfully"};
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to update user data.");
+    throw new Error(
+      `Failed to update user data. Reason: ${(error as Error).message}`
+    );
   }
 }
+
 // Function to fetch followers
 export async function fetchFollowers(userId: string) {
   try {
@@ -57,13 +67,15 @@ export async function fetchFollowers(userId: string) {
         salers.profile_picture AS follower_image,
         followers.follow_date
       FROM followers
-      JOIN salers ON followers.follower_id = users.id
+      JOIN salers ON followers.follower_id = salers.id
       WHERE followers.user_id = ${userId}
     `;
     return data.rows;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch followers.");
+    throw new Error(
+      `Failed to fetch followers. Reason: ${(error as Error).message}`
+    );
   }
 }
 
@@ -74,7 +86,7 @@ export async function fetchSales() {
       SELECT 
         id, 
         product_id, 
-        user_id, 
+        saler_id, 
         amount, 
         status, 
         date
@@ -83,11 +95,12 @@ export async function fetchSales() {
     `;
     return data.rows.map(sale => ({
       ...sale,
-      // Optionally format amount if necessary
       amount: formatCurrency(sale.amount),
     }));
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch sales.");
+    throw new Error(
+      `Failed to fetch sales. Reason: ${(error as Error).message}`
+    );
   }
 }

@@ -1,6 +1,6 @@
-import jose from "/src/public/images/jose.webp";
-import monica from "/src/public/images/monica.webp";
-import sabrina from "/src/public/images/sabrina.webp";
+import jose from "@/public/images/jose.webp";
+import monica from "@/public/images/monica.webp";
+import sabrina from "@/public/images/sabrina.webp";
 import Image from "next/image";
 
 const SatisfiedClients = () => {

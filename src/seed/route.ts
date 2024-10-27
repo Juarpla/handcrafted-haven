@@ -10,14 +10,14 @@ import {
 
 const client = await db.connect();
 
-async function seedUsers() {
+async function seedSalers() {
   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
   await client.sql`
     CREATE TABLE IF NOT EXISTS salers (
   id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
-  email TEXT NOT NULL UNIQUE, 
+  email TEXT NOT NULL UNIQUE, -- Esta columna ya tiene restricción UNIQUE
   password TEXT NOT NULL,
   profile_picture TEXT NOT NULL
 );
@@ -145,7 +145,7 @@ async function seedComments() {
 export async function GET() {
   try {
     await client.sql`BEGIN`;
-    await seedUsers();
+    await seedSalers();
     await seedProducts();
     await seedFollowers();
     await seedSales();
