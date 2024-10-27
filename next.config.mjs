@@ -6,7 +6,14 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ["placehold.co"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'example.com', // Ajusta al dominio que usas para las imágenes
+        port: '', // Dejar vacío si no usas un puerto específico
+        pathname: '/**', // Permite todas las rutas
+      },
+    ],
   },
   webpack: config => {
     config.resolve.alias["@"] = path.resolve("src");

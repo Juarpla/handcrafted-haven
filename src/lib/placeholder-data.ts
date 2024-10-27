@@ -6,28 +6,28 @@ const salers: Salers[] = [
     name: "Alice Johnson",
     email: "alice@example.com",
     password: "securepassword123",
-    profile_picture: "../ui/images/saler2.jpg",
+    profile_picture: "/public/images/saler2.jpg",
   },
   {
     id: "c87025a3-6182-4b57-8c8a-118b4e567b14",
     name: "Bob Smith",
     email: "bob@example.com",
     password: "anothersecurepassword",
-    profile_picture: "../ui/images/saler1.jpg",
+    profile_picture: "/public/images/saler1.jpg",
   },
   {
     id: "a7d7f6e2-4567-4b21-bb93-221d8ef5b1e3",
     name: "Charlie Brown",
     email: "charlie@example.com",
     password: "yetanothersecurepassword",
-    profile_picture: "../ui/images/saler3.jpg",
+    profile_picture: "/public/images/saler3.jpg",
   },
   {
     id: "d84f76b3-9021-42d2-a3c7-eec8f68a1a34",
     name: "Dani Prince",
-    email: "diana@example.com",
+    email: "dani@example.com",
     password: "supersecurepassword",
-    profile_picture: "../ui/images/saler4.jpg",
+    profile_picture: "/public/images/saler4.jpg",
   },
 ];
 
@@ -37,7 +37,7 @@ const products: Product[] = [
     productname: "Ceramic Vase",
     description: "Handcrafted ceramic vase with intricate floral designs.",
     price: 45,
-    image_url: "../ui/images/product 3.jpeg",
+    image_url: "/public/images/product3.jpeg",
     stock_quantity: 30,
   },
   {
@@ -45,7 +45,7 @@ const products: Product[] = [
     productname: "Wooden Jewelry Box",
     description: "Elegant wooden box carved with traditional patterns.",
     price: 55,
-    image_url: "../ui/images/wooden.webp",
+    image_url: "/public/images/product1.jpeg",
     stock_quantity: 40,
   },
   {
@@ -53,7 +53,7 @@ const products: Product[] = [
     productname: "Handwoven Basket",
     description: "Colorful handwoven basket made from natural fibers.",
     price: 20,
-    image_url: "../ui/images/product 2.jpeg",
+    image_url: "/public/images/product10.jpeg",
     stock_quantity: 100,
   },
   {
@@ -61,7 +61,7 @@ const products: Product[] = [
     productname: "Pottery Mug Set",
     description: "Set of 4 pottery mugs with unique hand-painted designs.",
     price: 35,
-    image_url: "../ui/images/pottery.webp",
+    image_url: "/public/images/product12.jpeg",
     stock_quantity: 25,
   },
   {
@@ -69,7 +69,7 @@ const products: Product[] = [
     productname: "Hand-painted Ceramic Plate",
     description: "Decorative ceramic plate with vibrant hand-painted designs.",
     price: 25,
-    image_url: "../ui/images/handPainted.jpg",
+    image_url: "/public/images/product15.jpeg",
     stock_quantity: 70,
   },
   {
@@ -77,7 +77,7 @@ const products: Product[] = [
     productname: "Woolen Scarf",
     description: "Soft, hand-knitted woolen scarf in various colors.",
     price: 30,
-    image_url: "../ui/images/woolenscarf.webp",
+    image_url: "/public/images/product4.jpeg",
     stock_quantity: 50,
   },
   {
@@ -85,7 +85,7 @@ const products: Product[] = [
     productname: "Leather Wallet",
     description: "Handcrafted leather wallet with multiple compartments.",
     price: 40,
-    image_url: "../ui/images/leatherWallet.webp",
+    image_url: "/public/images/product11.jpeg",
     stock_quantity: 35,
   },
   {
@@ -93,7 +93,7 @@ const products: Product[] = [
     productname: "Bamboo Cutting Board",
     description: "Durable bamboo cutting board with a smooth finish.",
     price: 18,
-    image_url: "../ui/images/bambooCuttingBoard.jpg",
+    image_url: "/public/images/product7.jpeg",
     stock_quantity: 80,
   },
   {
@@ -101,7 +101,7 @@ const products: Product[] = [
     productname: "Handmade Soap Set",
     description: "Set of 3 natural, handmade soaps with organic ingredients.",
     price: 22,
-    image_url: "../ui/images/handmadesoapset.webp",
+    image_url: "/public/images/product8.jpeg",
     stock_quantity: 90,
   },
 ];

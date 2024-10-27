@@ -2,6 +2,7 @@
 
 import localFont from "next/font/local";
 import "./globals.css";
+import {CartProvider} from "@/app/context/CartContext";
 import Footer from "@/app/ui/layout/footer";
 import Navigation from "@/app/ui/layout/Navigation";
 import {SessionProvider} from "next-auth/react"; // Import SessionProvider
@@ -28,9 +29,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} mt-[8%] bg-custom-white antialiased`}
       >
         <SessionProvider>
-          <Navigation />
-          {children}
-          <Footer />
+          <CartProvider>
+            <Navigation />
+            {children}
+            <Footer />
+          </CartProvider>
         </SessionProvider>
       </body>
     </html>
