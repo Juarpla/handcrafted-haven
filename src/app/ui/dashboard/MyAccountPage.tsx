@@ -18,32 +18,32 @@ const MyAccountPage = ({userName}: {userName: string}) => {
                 <span>No Photo</span>
               </div>
               <div className="ml-4">
-                <h2 className="text-2xl font-bold">{userName}</h2>
+                <h2 className="text-2xl font-bold text-black">{userName}</h2>
               </div>
             </div>
             <div className="mb-6">
               <div className="grid grid-cols-4 gap-4">
-                <div className="rounded bg-orange-200 p-4 text-center">
+                <div className="rounded bg-orange-200 p-4 text-center text-black">
                   <span>Pending Payment</span>
                 </div>
-                <div className="rounded bg-orange-200 p-4 text-center">
+                <div className="rounded bg-orange-200 p-4 text-center text-black">
                   <span>Pending Shipment</span>
                 </div>
-                <div className="rounded bg-orange-200 p-4 text-center">
+                <div className="rounded bg-orange-200 p-4 text-center text-black">
                   <span>Shipped</span>
                 </div>
-                <div className="rounded bg-orange-200 p-4 text-center">
+                <div className="rounded bg-orange-200 p-4 text-center text-black">
                   <span>Pending Review</span>
                 </div>
               </div>
             </div>
             <div>
-              <h3 className="mb-4 text-xl font-bold">Orders</h3>
+              <h3 className="mb-4 text-xl font-bold text-black">Orders</h3>
               <ul className="space-y-2">
-                <li className="cursor-pointer rounded bg-gray-100 p-4 hover:bg-gray-200">
+                <li className="cursor-pointer rounded bg-gray-100 p-4 hover:bg-gray-200 text-black">
                   Appeals
                 </li>
-                <li className="cursor-pointer rounded bg-gray-100 p-4 hover:bg-gray-200">
+                <li className="cursor-pointer rounded bg-gray-100 p-4 hover:bg-gray-200 text-black">
                   Refunds and Returns
                 </li>
               </ul>
