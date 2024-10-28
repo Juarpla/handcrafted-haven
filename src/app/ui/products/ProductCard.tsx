@@ -6,7 +6,7 @@ import type {StaticImageData} from "next/image";
 import React from "react";
 
 type ProductProps = {
-  productId: number; // Cambiado a number
+  productId: string; // number Cambiado a number
   name: string;
   price: number;
   image: string | StaticImageData;
@@ -21,7 +21,7 @@ const ProductCard: React.FC<ProductProps> = ({
   onAddToCart,
 }) => {
   const {addToCart} = useCart();
-
+console.log("ProductCard id: ", productId)
   const handleAddToCart = () => {
     addToCart({id: productId, name, price, quantity: 1});
     onAddToCart(productId); // Usar directamente como número

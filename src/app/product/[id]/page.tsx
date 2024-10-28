@@ -3,13 +3,19 @@
 
 "use client";
 
+import { fetchProductById } from "@/lib/actions";
 import Image from "next/image";
 import React, { useState } from "react";
 
 export default function ProductDetailsPage({ params }: { params: { id: string } }) {
+  console.log("params", params)
+  console.log("id= ", params.id)
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const [reviewText, setReviewText] = useState("");
   const [rating, setRating] = useState(0);
+
+  const individualProduct = fetchProductById(params);
+  console.log("productbyid= ", individualProduct);
 
   const product = {
     id: params.id,

@@ -7,7 +7,7 @@ import {Product} from "@/lib/definitions";
 import {useEffect, useState} from "react";
 
 interface CartItem {
-  id: number;
+  id: string;
   quantity: number;
 }
 
@@ -33,12 +33,13 @@ export default function ProductImages() {
       try {
         const fetchedProducts = await fetchProducts();
         setProducts(fetchedProducts);
+        console.log("fetchedId: ", fetchedProducts[0].id)
       } catch (error) {
         console.error("Error fetching products:", error);
         setError("Could not load products. Please try again later.");
       }
     };
-
+    
     loadProducts();
   }, []);
 
@@ -54,7 +55,7 @@ export default function ProductImages() {
         {products.map(product => (
           <ProductCard
             key={product.id}
-            productId={parseInt(product.id)} // Convertir a string si es necesario
+            productId={(product.id)} // parseInt Convertir a string si es necesario
             name={product.productname}
             price={product.price}
             image={product.image_url}

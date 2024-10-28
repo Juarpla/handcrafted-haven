@@ -71,7 +71,7 @@ export async function fetchProducts() {
 }
 
 // Function to retrieve a product by ID
-export async function fetchProductById(id: number) {
+export async function fetchProductById(id: string) { // number
   try {
     const data =
       await sql<Product>`SELECT id, productname, description, price, image_url FROM products WHERE id = ${id}`;
