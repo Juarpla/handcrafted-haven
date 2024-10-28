@@ -1,164 +1,166 @@
-import {db} from "@vercel/postgres";
-import bcrypt from "bcrypt";
-import {
-  comments,
-  followers,
-  products,
-  sales,
-  sellers,
-} from "../lib/placeholder-data";
+// Deprecated (we are no going to seed data anymore by this file)
 
-const client = await db.connect();
+// import {db} from "@vercel/postgres";
+// import bcrypt from "bcrypt";
+// import {
+//   comments,
+//   followers,
+//   products,
+//   sales,
+//   sellers,
+// } from "../lib/placeholder-data";
 
-async function seedSellers() {
-  await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+// const client = await db.connect();
 
-  await client.sql`
-    CREATE TABLE IF NOT EXISTS sellers (
-  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  email TEXT NOT NULL UNIQUE, -- Esta columna ya tiene restricción UNIQUE
-  password TEXT NOT NULL,
-  profile_picture TEXT NOT NULL
-);
-  `;
+// async function seedSellers() {
+//   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
-  const insertedUsers = await Promise.all(
-    sellers.map(async saler => {
-      const hashedPassword = await bcrypt.hash(saler.password, 10);
-      return client.sql`
-        INSERT INTO sellers (name, email, password, profile_picture)
-        VALUES (${saler.name}, ${saler.email}, ${hashedPassword}, ${saler.profile_picture})
-        ON CONFLICT (email) DO NOTHING;
-      `;
-    })
-  );
+//   await client.sql`
+//     CREATE TABLE IF NOT EXISTS sellers (
+//   id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+//   name VARCHAR(255) NOT NULL,
+//   email TEXT NOT NULL UNIQUE, -- Esta columna ya tiene restricción UNIQUE
+//   password TEXT NOT NULL,
+//   profile_picture TEXT NOT NULL
+// );
+//   `;
 
-  return insertedUsers;
-}
+//   const insertedUsers = await Promise.all(
+//     sellers.map(async saler => {
+//       const hashedPassword = await bcrypt.hash(saler.password, 10);
+//       return client.sql`
+//         INSERT INTO sellers (name, email, password, profile_picture)
+//         VALUES (${saler.name}, ${saler.email}, ${hashedPassword}, ${saler.profile_picture})
+//         ON CONFLICT (email) DO NOTHING;
+//       `;
+//     })
+//   );
 
-async function seedProducts() {
-  await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+//   return insertedUsers;
+// }
 
-  await client.sql`
-   CREATE TABLE IF NOT EXISTS products (
-  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-  productname VARCHAR(255) NOT NULL UNIQUE, -- Añadir UNIQUE aquí
-  description TEXT NOT NULL,
-  price INT NOT NULL,
-  image_url TEXT NOT NULL,
-  stock_quantity INT NOT NULL
-);
-  `;
+// async function seedProducts() {
+//   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
-  const insertedProducts = await Promise.all(
-    products.map(
-      product => client.sql`
-        INSERT INTO products (productname, description, price, image_url, stock_quantity)
-        VALUES (${product.productname}, ${product.description}, ${product.price}, ${product.image_url}, ${product.stock_quantity})
-        ON CONFLICT (productname) DO NOTHING;
-      `
-    )
-  );
+//   await client.sql`
+//    CREATE TABLE IF NOT EXISTS products (
+//   id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+//   productname VARCHAR(255) NOT NULL UNIQUE, -- Añadir UNIQUE aquí
+//   description TEXT NOT NULL,
+//   price INT NOT NULL,
+//   image_url TEXT NOT NULL,
+//   stock_quantity INT NOT NULL
+// );
+//   `;
 
-  return insertedProducts;
-}
+//   const insertedProducts = await Promise.all(
+//     products.map(
+//       product => client.sql`
+//         INSERT INTO products (productname, description, price, image_url, stock_quantity)
+//         VALUES (${product.productname}, ${product.description}, ${product.price}, ${product.image_url}, ${product.stock_quantity})
+//         ON CONFLICT (productname) DO NOTHING;
+//       `
+//     )
+//   );
 
-async function seedFollowers() {
-  await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+//   return insertedProducts;
+// }
 
-  await client.sql`
-    CREATE TABLE IF NOT EXISTS followers (
-      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-      user_id UUID NOT NULL,
-      follower_id UUID NOT NULL,
-      follow_date DATE NOT NULL
-    );
-  `;
+// async function seedFollowers() {
+//   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
-  const insertedFollowers = await Promise.all(
-    followers.map(
-      follower => client.sql`
-        INSERT INTO followers (user_id, follower_id, follow_date)
-        VALUES (${follower.user_id}, ${follower.follower_id}, ${follower.follow_date})
-        ON CONFLICT (id) DO NOTHING;
-      `
-    )
-  );
+//   await client.sql`
+//     CREATE TABLE IF NOT EXISTS followers (
+//       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+//       user_id UUID NOT NULL,
+//       follower_id UUID NOT NULL,
+//       follow_date DATE NOT NULL
+//     );
+//   `;
 
-  return insertedFollowers;
-}
+//   const insertedFollowers = await Promise.all(
+//     followers.map(
+//       follower => client.sql`
+//         INSERT INTO followers (user_id, follower_id, follow_date)
+//         VALUES (${follower.user_id}, ${follower.follower_id}, ${follower.follow_date})
+//         ON CONFLICT (id) DO NOTHING;
+//       `
+//     )
+//   );
 
-async function seedSales() {
-  await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+//   return insertedFollowers;
+// }
 
-  await client.sql`
-    CREATE TABLE IF NOT EXISTS sales (
-      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-      product_id UUID NOT NULL,
-      user_id UUID NOT NULL,
-      amount INT NOT NULL,
-      status VARCHAR(255) NOT NULL,
-      date DATE NOT NULL
-    );
-  `;
+// async function seedSales() {
+//   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
-  const insertedSales = await Promise.all(
-    sales.map(
-      sale => client.sql`
-        INSERT INTO sales (product_id, user_id, amount, status, date)
-        VALUES (${sale.product_id}, ${sale.user_id}, ${sale.amount}, ${sale.status}, ${sale.date})
-        ON CONFLICT (id) DO NOTHING;
-      `
-    )
-  );
+//   await client.sql`
+//     CREATE TABLE IF NOT EXISTS sales (
+//       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+//       product_id UUID NOT NULL,
+//       user_id UUID NOT NULL,
+//       amount INT NOT NULL,
+//       status VARCHAR(255) NOT NULL,
+//       date DATE NOT NULL
+//     );
+//   `;
 
-  return insertedSales;
-}
+//   const insertedSales = await Promise.all(
+//     sales.map(
+//       sale => client.sql`
+//         INSERT INTO sales (product_id, user_id, amount, status, date)
+//         VALUES (${sale.product_id}, ${sale.user_id}, ${sale.amount}, ${sale.status}, ${sale.date})
+//         ON CONFLICT (id) DO NOTHING;
+//       `
+//     )
+//   );
 
-async function seedComments() {
-  await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+//   return insertedSales;
+// }
 
-  await client.sql`
-    CREATE TABLE IF NOT EXISTS comments (
-      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-      user_id UUID NOT NULL,
-      product_id UUID NOT NULL,
-      content TEXT NOT NULL,
-      timestamp TIMESTAMP NOT NULL
-    );
-  `;
+// async function seedComments() {
+//   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
-  const insertedComments = await Promise.all(
-    comments.map(
-      comment => client.sql`
-        INSERT INTO comments (user_id, product_id, content, timestamp)
-        VALUES (${comment.user_id}, ${comment.product_id}, ${comment.content}, ${comment.timestamp})
-        ON CONFLICT (id) DO NOTHING;
-      `
-    )
-  );
+//   await client.sql`
+//     CREATE TABLE IF NOT EXISTS comments (
+//       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+//       user_id UUID NOT NULL,
+//       product_id UUID NOT NULL,
+//       content TEXT NOT NULL,
+//       timestamp TIMESTAMP NOT NULL
+//     );
+//   `;
 
-  return insertedComments;
-}
+//   const insertedComments = await Promise.all(
+//     comments.map(
+//       comment => client.sql`
+//         INSERT INTO comments (user_id, product_id, content, timestamp)
+//         VALUES (${comment.user_id}, ${comment.product_id}, ${comment.content}, ${comment.timestamp})
+//         ON CONFLICT (id) DO NOTHING;
+//       `
+//     )
+//   );
 
-export async function GET() {
-  try {
-    await client.sql`BEGIN`;
-    await seedSellers();
-    await seedProducts();
-    await seedFollowers();
-    await seedSales();
-    await seedComments();
-    await client.sql`COMMIT`;
+//   return insertedComments;
+// }
 
-    return Response.json({message: "Database seeded successfully"});
-  } catch (error) {
-    console.error("Seeding error:", error);
-    await client.sql`ROLLBACK`;
-    return Response.json(
-      {error: error instanceof Error ? error.message : "Unknown error"},
-      {status: 500}
-    );
-  }
-}
+// export async function GET() {
+//   try {
+//     await client.sql`BEGIN`;
+//     await seedSellers();
+//     await seedProducts();
+//     await seedFollowers();
+//     await seedSales();
+//     await seedComments();
+//     await client.sql`COMMIT`;
+
+//     return Response.json({message: "Database seeded successfully"});
+//   } catch (error) {
+//     console.error("Seeding error:", error);
+//     await client.sql`ROLLBACK`;
+//     return Response.json(
+//       {error: error instanceof Error ? error.message : "Unknown error"},
+//       {status: 500}
+//     );
+//   }
+// }
