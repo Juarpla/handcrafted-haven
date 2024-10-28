@@ -1,6 +1,8 @@
-import {Comment, Follower, Product, Sale, Salers} from "./definitions";
+// Deprecated (we are no going to seed data anymore by this file)
 
-const salers: Salers[] = [
+import {Comment, Follower, Product, Sale, Seller} from "./definitions";
+
+const sellers: Seller[] = [
   {
     id: "5fdc7aaf-d067-4d0a-aeb5-2e7b8317f9b3",
     name: "Alice Johnson",
@@ -148,4 +150,4 @@ const comments: Comment[] = [
   },
 ];
 
-export {salers, comments, sales, followers, products};
+export {sellers, comments, sales, followers, products};

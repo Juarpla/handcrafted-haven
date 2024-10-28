@@ -4,17 +4,17 @@ import {
   comments,
   followers,
   products,
-  salers,
   sales,
+  sellers,
 } from "../lib/placeholder-data";
 
 const client = await db.connect();
 
-async function seedSalers() {
+async function seedSellers() {
   await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
   await client.sql`
-    CREATE TABLE IF NOT EXISTS salers (
+    CREATE TABLE IF NOT EXISTS sellers (
   id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   email TEXT NOT NULL UNIQUE, -- Esta columna ya tiene restricción UNIQUE
@@ -24,10 +24,10 @@ async function seedSalers() {
   `;
 
   const insertedUsers = await Promise.all(
-    salers.map(async saler => {
+    sellers.map(async saler => {
       const hashedPassword = await bcrypt.hash(saler.password, 10);
       return client.sql`
-        INSERT INTO salers (name, email, password, profile_picture)
+        INSERT INTO sellers (name, email, password, profile_picture)
         VALUES (${saler.name}, ${saler.email}, ${hashedPassword}, ${saler.profile_picture})
         ON CONFLICT (email) DO NOTHING;
       `;
@@ -145,7 +145,7 @@ async function seedComments() {
 export async function GET() {
   try {
     await client.sql`BEGIN`;
-    await seedSalers();
+    await seedSellers();
     await seedProducts();
     await seedFollowers();
     await seedSales();

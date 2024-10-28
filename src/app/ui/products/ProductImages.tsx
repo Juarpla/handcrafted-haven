@@ -54,11 +54,12 @@ export default function ProductImages() {
         {products.map(product => (
           <ProductCard
             key={product.id}
-            productId={parseInt(product.id)} // Convertir a string si es necesario
+            productId={product.id}
+            productCartId={parseInt(product.id)}
             name={product.productname}
             price={product.price}
-            image={product.image_url}
-            onAddToCart={(id: number) => handleAddToCart(Number(id))} // Convertir el ID a número
+            image_url={product.image_url}
+            onAddToCart={(id: number) => handleAddToCart(Number(id))}
           />
         ))}
       </div>
