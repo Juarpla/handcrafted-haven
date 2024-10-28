@@ -40,10 +40,10 @@ const MyAccountPage = ({userName}: {userName: string}) => {
             <div>
               <h3 className="mb-4 text-xl font-bold text-black">Orders</h3>
               <ul className="space-y-2">
-                <li className="cursor-pointer rounded bg-gray-100 p-4 hover:bg-gray-200 text-black">
+                <li className="cursor-pointer rounded bg-gray-100 p-4 text-black hover:bg-gray-200">
                   Appeals
                 </li>
-                <li className="cursor-pointer rounded bg-gray-100 p-4 hover:bg-gray-200 text-black">
+                <li className="cursor-pointer rounded bg-gray-100 p-4 text-black hover:bg-gray-200">
                   Refunds and Returns
                 </li>
               </ul>

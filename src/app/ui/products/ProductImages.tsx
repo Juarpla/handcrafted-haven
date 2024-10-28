@@ -4,6 +4,7 @@ import CartIcon from "@/app/ui/products/CartIcon";
 import ProductCard from "@/app/ui/products/ProductCard";
 import {fetchProducts} from "@/lib/actions";
 import {Product} from "@/lib/definitions";
+import {useRouter} from "next/navigation";
 import {useEffect, useState} from "react";
 
 interface CartItem {
@@ -12,6 +13,9 @@ interface CartItem {
 }
 
 export default function ProductImages() {
+  const router = useRouter();
+  const searchParams = new URLSearchParams(window.location.search);
+  const searchQuery = searchParams.get("search"); // Obtener la query del buscador
   const [cart, setCart] = useState<CartItem[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -42,6 +46,13 @@ export default function ProductImages() {
     loadProducts();
   }, []);
 
+  // Filtrar productos basados en la búsqueda
+  const filteredProducts = searchQuery
+    ? products.filter(product =>
+        product.productname.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : products;
+
   return (
     <div className="container mx-auto p-4">
       <div className="mb-4 flex justify-end">
@@ -51,14 +62,14 @@ export default function ProductImages() {
       </div>
       {error && <div className="text-red-500">{error}</div>}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-        {products.map(product => (
+        {filteredProducts.map(product => (
           <ProductCard
             key={product.id}
-            productId={parseInt(product.id)} // Convertir a string si es necesario
+            productId={parseInt(product.id)}
             name={product.productname}
             price={product.price}
             image={product.image_url}
-            onAddToCart={(id: number) => handleAddToCart(Number(id))} // Convertir el ID a número
+            onAddToCart={(id: number) => handleAddToCart(Number(id))}
           />
         ))}
       </div>

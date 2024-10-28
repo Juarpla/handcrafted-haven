@@ -4,9 +4,9 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, {useState} from "react";
 
-export default function ProductDetailsPage({ params }: { params: { id: string } }) {
+export default function ProductDetailsPage({params}: {params: {id: string}}) {
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const [reviewText, setReviewText] = useState("");
   const [rating, setRating] = useState(0);
@@ -31,7 +31,7 @@ export default function ProductDetailsPage({ params }: { params: { id: string } 
   };
 
   const handleReviewSubmit = () => {
-    console.log("Review submitted:", { reviewText, rating });
+    console.log("Review submitted:", {reviewText, rating});
     handleCloseReviewModal();
   };
 
@@ -47,8 +47,8 @@ export default function ProductDetailsPage({ params }: { params: { id: string } 
           className="mb-4 h-64 w-full object-cover"
         />
         <p className="text-left">{product.description}</p>
-        
-        <button 
+
+        <button
           onClick={handleOpenReviewModal}
           className="mt-4 w-full rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
         >
@@ -61,13 +61,13 @@ export default function ProductDetailsPage({ params }: { params: { id: string } 
               <h2 className="mb-4 text-center text-xl">Write a Review</h2>
               <textarea
                 value={reviewText}
-                onChange={(e) => setReviewText(e.target.value)}
+                onChange={e => setReviewText(e.target.value)}
                 className="mb-4 w-full rounded border p-2"
                 placeholder="Write your review here..."
               />
               <div className="mb-4 text-center">
                 <label className="mr-2">Rating:</label>
-                {[1, 2, 3, 4, 5].map((star) => (
+                {[1, 2, 3, 4, 5].map(star => (
                   <button
                     key={star}
                     onClick={() => setRating(star)}
@@ -78,13 +78,13 @@ export default function ProductDetailsPage({ params }: { params: { id: string } 
                 ))}
               </div>
               <div className="flex justify-end">
-                <button 
+                <button
                   onClick={handleCloseReviewModal}
                   className="mr-2 rounded bg-gray-300 px-4 py-2 hover:bg-gray-400"
                 >
                   Cancel
                 </button>
-                <button 
+                <button
                   onClick={handleReviewSubmit}
                   className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
                 >
