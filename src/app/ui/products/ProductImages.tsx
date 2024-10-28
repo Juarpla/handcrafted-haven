@@ -4,18 +4,29 @@ import CartIcon from "@/app/ui/products/CartIcon";
 import ProductCard from "@/app/ui/products/ProductCard";
 import {fetchProducts} from "@/lib/actions";
 import {Product} from "@/lib/definitions";
-import {useRouter} from "next/navigation";
-import {useEffect, useState} from "react";
+import {useSearchParams} from "next/navigation";
+import {Suspense, useEffect, useState} from "react";
 
 interface CartItem {
   id: number;
   quantity: number;
 }
 
+const Loading = () => <div>Loading...</div>; // Componente de carga
+
 export default function ProductImages() {
-  const router = useRouter();
-  const searchParams = new URLSearchParams(window.location.search);
-  const searchQuery = searchParams.get("search"); // Obtener la query del buscador
+  return (
+    <Suspense fallback={<Loading />}>
+      {" "}
+      {/* Suspense boundary */}
+      <ProductImagesContent />
+    </Suspense>
+  );
+}
+
+function ProductImagesContent() {
+  const searchParams = useSearchParams();
+  const searchQuery = searchParams?.get("search") || "";
   const [cart, setCart] = useState<CartItem[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -46,7 +57,6 @@ export default function ProductImages() {
     loadProducts();
   }, []);
 
-  // Filtrar productos basados en la búsqueda
   const filteredProducts = searchQuery
     ? products.filter(product =>
         product.productname.toLowerCase().includes(searchQuery.toLowerCase())
