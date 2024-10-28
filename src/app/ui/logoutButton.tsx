@@ -1,7 +1,5 @@
 /* eslint-disable */
 
-"use client";
-
 import {signOut} from "next-auth/react";
 import {useRouter} from "next/navigation"; // Use next/navigation for app directory
 

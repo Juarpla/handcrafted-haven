@@ -33,76 +33,124 @@ const salers: Salers[] = [
 
 const products: Product[] = [
   {
-    id: "1b6d4e30-45fd-402d-b44b-4b2a72909ad7",
-    productname: "Ceramic Vase",
-    description: "Handcrafted ceramic vase with intricate floral designs.",
-    price: 45,
-    image_url: "/public/images/product3.jpeg",
-    stock_quantity: 30,
-  },
-  {
-    id: "a3f8c772-70b8-4f59-b21a-1d52be1c7623",
-    productname: "Wooden Jewelry Box",
-    description: "Elegant wooden box carved with traditional patterns.",
-    price: 55,
-    image_url: "/public/images/product1.jpeg",
-    stock_quantity: 40,
-  },
-  {
-    id: "b49d1b7f-637a-4122-9350-ef9347b72d2e",
-    productname: "Handwoven Basket",
-    description: "Colorful handwoven basket made from natural fibers.",
-    price: 20,
-    image_url: "/public/images/product10.jpeg",
-    stock_quantity: 100,
-  },
-  {
-    id: "e1b3c987-9a2c-44c8-883d-4b688f89d04f",
-    productname: "Pottery Mug Set",
-    description: "Set of 4 pottery mugs with unique hand-painted designs.",
-    price: 35,
-    image_url: "/public/images/product12.jpeg",
-    stock_quantity: 25,
-  },
-  {
-    id: "5e5b2c34-17f7-4a29-9f87-fc2747e57df2",
-    productname: "Hand-painted Ceramic Plate",
-    description: "Decorative ceramic plate with vibrant hand-painted designs.",
-    price: 25,
-    image_url: "/public/images/product15.jpeg",
-    stock_quantity: 70,
-  },
-  {
-    id: "3a5e6a9b-b9e2-4b3b-95f1-829b29d7dbf8",
-    productname: "Woolen Scarf",
-    description: "Soft, hand-knitted woolen scarf in various colors.",
-    price: 30,
-    image_url: "/public/images/product4.jpeg",
-    stock_quantity: 50,
-  },
-  {
-    id: "cb6a5e3d-88d4-4a1c-8cb7-267acb6f1e27",
-    productname: "Leather Wallet",
-    description: "Handcrafted leather wallet with multiple compartments.",
+    id: "wooden-sculpture-" + Math.random().toString(36).substr(2, 9),
+    productname: "Wooden Sculpture",
+    description: "This beautifully carved wooden sculpture was crafted by a local artist who finds inspiration in the natural curves and textures of the wood. Each piece is meticulously shaped by hand, with attention to detail that brings the wood to life.",
     price: 40,
-    image_url: "/public/images/product11.jpeg",
-    stock_quantity: 35,
+    image_url: "/public/images/wooden_sculpture.jpg",
+    stock_quantity: 5
   },
   {
-    id: "72f9b7f8-8d5e-4b1e-8e5f-c7d8a4f2b317",
-    productname: "Bamboo Cutting Board",
-    description: "Durable bamboo cutting board with a smooth finish.",
-    price: 18,
-    image_url: "/public/images/product7.jpeg",
-    stock_quantity: 80,
+    id: "handwoven-basket-" + Math.random().toString(36).substr(2, 9),
+    productname: "Handwoven Basket",
+    description: "Woven with care by a skilled artisan, this sturdy and elegant handwoven basket is the result of a centuries-old tradition. Crafted from natural fibers, each basket is one-of-a-kind.",
+    price: 35,
+    image_url: "/public/images/handwoven_basket.jpg", 
+    stock_quantity: 8
   },
   {
-    id: "a8f9d6c1-5b5e-4731-90d4-1b2a7c5e947d",
+    id: "ceramic-vase-" + Math.random().toString(36).substr(2, 9),
+    productname: "Ceramic Vase",
+    description: "This hand-thrown ceramic vase is a true work of art. The potter, a local craftsman with a passion for ceramics, carefully shapes each piece on a pottery wheel.",
+    price: 50,
+    image_url: "/public/images/ceramic_vase.jpg",
+    stock_quantity: 3
+  },
+  {
+    id: "macrame-wall-" + Math.random().toString(36).substr(2, 9),
+    productname: "Macramé Wall Hanging",
+    description: "Crafted with an eye for detail and a love of traditional techniques, this intricate macramé wall hanging brings a warm, bohemian touch to any space.",
+    price: 65,
+    image_url: "/public/images/macrame_wall_hanging.jpg",
+    stock_quantity: 4
+  },
+  {
+    id: "silk-scarf-" + Math.random().toString(36).substr(2, 9),
+    productname: "Hand-Painted Silk Scarf",
+    description: "This luxurious hand-painted silk scarf is a true work of wearable art. The artist, who draws inspiration from the natural world, carefully applies vibrant dyes to the smooth silk surface.",
+    price: 80,
+    image_url: "/public/images/silk_scarf.jpg",
+    stock_quantity: 6
+  },
+  {
+    id: "suncatcher-" + Math.random().toString(36).substr(2, 9),
+    productname: "Stained Glass Suncatcher",
+    description: "Handcrafted by a local artisan with a passion for the ancient art of stained glass, this colorful suncatcher will brighten any window it graces.",
+    price: 45,
+    image_url: "/public/images/stained_glass_suncatcher.jpg",
+    stock_quantity: 7
+  },
+  {
+    id: "leather-journal-" + Math.random().toString(36).substr(2, 9),
+    productname: "Leather Journal",
+    description: "This handbound leather journal is the perfect companion for the creative mind. Crafted by a local bookbinder with years of experience.",
+    price: 30,
+    image_url: "/public/images/leather_journal.jpg",
+    stock_quantity: 10
+  },
+  {
+    id: "felted-wool-" + Math.random().toString(36).substr(2, 9),
+    productname: "Felted Wool Animal",
+    description: "These adorable felted wool animal figurines are the result of a painstaking process, lovingly crafted by a local artisan with a keen eye for detail.",
+    price: 25,
+    image_url: "/public/images/felted_wool_animal.jpg",
+    stock_quantity: 12
+  },
+  {
+    id: "soap-set-" + Math.random().toString(36).substr(2, 9),
     productname: "Handmade Soap Set",
-    description: "Set of 3 natural, handmade soaps with organic ingredients.",
-    price: 22,
-    image_url: "/public/images/product8.jpeg",
-    stock_quantity: 90,
+    description: "Treat your senses to the luxurious experience of these artisanal handmade soaps. Crafted by a local soapmaker using natural ingredients.",
+    price: 20,
+    image_url: "/public/images/handmade_soap_set.jpg",
+    stock_quantity: 15
+  },
+  {
+    id: "table-runner-" + Math.random().toString(36).substr(2, 9),
+    productname: "Quilted Table Runner",
+    description: "This handcrafted quilted table runner is the result of countless hours of meticulous work by a local textile artist.",
+    price: 55,
+    image_url: "/public/images/quilted_table_runner.jpg",
+    stock_quantity: 4
+  },
+  {
+    id: "glass-ornament-" + Math.random().toString(36).substr(2, 9),
+    productname: "Blown Glass Ornament",
+    description: "These delicate hand-blown glass ornaments are the work of a talented local artisan who has honed her craft over many years.",
+    price: 35,
+    image_url: "/public/images/blown_glass_ornament.jpg",
+    stock_quantity: 8
+  },
+  {
+    id: "pillow-cover-" + Math.random().toString(36).substr(2, 9),
+    productname: "Embroidered Pillow Cover",
+    description: "This exquisite hand-embroidered pillow cover is a testament to the artistry and skill of local artisans.",
+    price: 40,
+    image_url: "/public/images/embroidered_pillow_cover.jpg",
+    stock_quantity: 6
+  },
+  {
+    id: "gemstone-pendant-" + Math.random().toString(36).substr(2, 9),
+    productname: "Wire-Wrapped Gemstone Pendant",
+    description: "This unique wire-wrapped pendant features a natural gemstone that has been carefully selected and incorporated into a one-of-a-kind design.",
+    price: 45,
+    image_url: "/public/images/wire_wrapped_pendant.jpg",
+    stock_quantity: 9
+  },
+  {
+    id: "wooden-spoon-" + Math.random().toString(36).substr(2, 9),
+    productname: "Carved Wooden Spoon Set",
+    description: "These hand-carved wooden spoons are not only functional kitchen tools but also beautiful works of art.",
+    price: 30,
+    image_url: "/public/images/wooden_spoon_set.jpg",
+    stock_quantity: 7
+  },
+  {
+    id: "flower-art-" + Math.random().toString(36).substr(2, 9),
+    productname: "Pressed Flower Art Frame",
+    description: "This framed artwork featuring delicately pressed flowers is a true testament to the beauty of nature and the skill of the artist who created it.",
+    price: 60,
+    image_url: "/public/images/pressed_flower_art.jpg",
+    stock_quantity: 5
   },
 ];
 

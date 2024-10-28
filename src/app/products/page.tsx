@@ -4,9 +4,9 @@ import React from "react";
 import ProductsTable from "./products";
 import { fetchProducts } from "@/lib/data";
 
-const productData = await fetchProducts();
 
-export default function Products() {
+export default async function Products() {
+  const productData = await fetchProducts();
   return (
     <>
       <main className="mx-auto mt-[5%] block min-h-screen w-6/12">

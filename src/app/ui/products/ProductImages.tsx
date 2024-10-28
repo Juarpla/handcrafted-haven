@@ -1,5 +1,3 @@
-"use client";
-
 import CartIcon from "@/app/ui/products/CartIcon";
 import ProductCard from "@/app/ui/products/ProductCard";
 import {fetchProducts} from "@/lib/actions";
