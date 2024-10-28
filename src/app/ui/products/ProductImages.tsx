@@ -2,19 +2,23 @@
 
 import CartIcon from "@/app/ui/products/CartIcon";
 import ProductCard from "@/app/ui/products/ProductCard";
-import {fetchProducts} from "@/lib/actions";
-import {Product} from "@/lib/definitions";
-import {useEffect, useState} from "react";
+import SortDropdown from "./ProductSort";  // Add this import
+import { fetchProducts } from "@/lib/actions";
+import { Product } from "@/lib/definitions";
+import { useEffect, useState } from "react";
 
 interface CartItem {
   id: number;
   quantity: number;
 }
 
+type SortOptionType = 'PRICE_LOW_HIGH' | 'PRICE_HIGH_LOW' | 'NAME_A_Z' | 'NAME_Z_A';
+
 export default function ProductImages() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [currentSort, setCurrentSort] = useState<SortOptionType | null>(null);
 
   const handleAddToCart = (id: number) => {
     setCart(prevCart => {
@@ -26,6 +30,27 @@ export default function ProductImages() {
       }
       return [...prevCart, {id, quantity: 1}];
     });
+  };
+
+  const handleSort = (sortOption: SortOptionType) => {
+    setCurrentSort(sortOption);
+    
+    const sortedProducts = [...products].sort((a, b) => {
+      switch (sortOption) {
+        case 'PRICE_LOW_HIGH':
+          return a.price - b.price;
+        case 'PRICE_HIGH_LOW':
+          return b.price - a.price;
+        case 'NAME_A_Z':
+          return a.productname.localeCompare(b.productname);
+        case 'NAME_Z_A':
+          return b.productname.localeCompare(a.productname);
+        default:
+          return 0;
+      }
+    });
+    
+    setProducts(sortedProducts);
   };
 
   useEffect(() => {
@@ -44,7 +69,8 @@ export default function ProductImages() {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="mb-4 flex justify-end">
+      <div className="mb-4 flex justify-between items-center">
+        <SortDropdown onSort={handleSort} currentSort={currentSort} />
         <CartIcon
           itemCount={cart.reduce((total, item) => total + item.quantity, 0)}
         />
@@ -54,11 +80,11 @@ export default function ProductImages() {
         {products.map(product => (
           <ProductCard
             key={product.id}
-            productId={parseInt(product.id)} // Convertir a string si es necesario
+            productId={parseInt(product.id)}
             name={product.productname}
             price={product.price}
             image={product.image_url}
-            onAddToCart={(id: number) => handleAddToCart(Number(id))} // Convertir el ID a número
+            onAddToCart={(id: number) => handleAddToCart(Number(id))}
           />
         ))}
       </div>

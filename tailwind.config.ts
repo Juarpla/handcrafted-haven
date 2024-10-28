@@ -13,6 +13,7 @@ const config: Config = {
         foreground: "var(--foreground)",
         "custom-orange": "#F4A261",
         "custom-white": "#eeeeee",
+        "custom-dark-green": "#264653",
       },
       boxShadow: {
         "text-yellow": "2px 2px 5px #E9C46A",
