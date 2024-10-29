@@ -108,3 +108,18 @@ export async function createComment(newComment: Partial<Comment>) {
     return {message: "❌ Failed to create comment"};
   }
 }
+
+export async function searchProducts(query: string): Promise<Product[]> {
+  try {
+    const data = await sql<Product>`
+      SELECT id, productname, description, price, image_url, stock_quantity
+      FROM products
+      WHERE productname ILIKE ${"%" + query + "%"}
+      LIMIT 2
+    `;
+    return data.rows;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch products.");
+  }
+}
