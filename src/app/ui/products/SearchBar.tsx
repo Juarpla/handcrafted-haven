@@ -43,14 +43,14 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="relative">
-      <div className="flex items-center rounded-md border border-gray-300 px-3 py-2">
+    <div className="relative w-full sm:max-w-md lg:max-w-lg">
+      <div className="flex items-center rounded-md border border-gray-300 px-3 py-1 sm:py-2 lg:py-3">
         <input
           type="text"
           value={query}
           onChange={handleSearch}
           placeholder="Search products..."
-          className="flex-grow rounded-full px-20 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-grow rounded-full px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 sm:px-4 sm:py-2 sm:text-base lg:px-6 lg:py-3"
         />
         <button onClick={handleSearchSubmit} className="ml-2 text-gray-500">
           🔍
