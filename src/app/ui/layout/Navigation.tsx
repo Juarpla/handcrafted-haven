@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {useEffect} from "react";
 import LogoutButton from "../logoutButton";
+import SearchBar from "../products/SearchBar";
 
 export default function Navigation() {
   const {data: session, status} = useSession();
@@ -24,6 +25,7 @@ export default function Navigation() {
               />
             </Link>
           </div>
+          <SearchBar />
           <div className="flex space-x-4">
             <Link
               className="flex items-center justify-center rounded-md px-3 py-2 text-lg font-bold text-white transition duration-500 hover:bg-gray-800 hover:bg-opacity-90 hover:text-white"
@@ -40,13 +42,14 @@ export default function Navigation() {
 
             {status === "authenticated" ? (
               <>
-              <Link
-                className="flex items-center justify-center rounded-md px-3 py-2 text-lg font-bold text-white transition duration-500 hover:bg-gray-800 hover:bg-opacity-90 hover:text-white"
-                href="/dashboard"
-              >Profile</Link>
-              <LogoutButton/>
+                <Link
+                  className="flex items-center justify-center rounded-md px-3 py-2 text-lg font-bold text-white transition duration-500 hover:bg-gray-800 hover:bg-opacity-90 hover:text-white"
+                  href="/dashboard"
+                >
+                  Profile
+                </Link>
+                <LogoutButton />
               </>
-              
             ) : (
               <Link
                 className="flex items-center justify-center rounded-md px-1 py-2 text-lg font-bold text-black transition duration-500"

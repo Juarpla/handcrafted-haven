@@ -2,7 +2,7 @@
 "use client";
 
 import Sidebar from "@/app/ui/dashboard/sidebar";
-import React, { useState } from "react";
+import React, {useState} from "react";
 
 export default function ProductsPage() {
   const [productData, setProductData] = useState<{
@@ -18,13 +18,13 @@ export default function ProductsPage() {
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target;
-    setProductData({ ...productData, [name]: value });
+    const {name, value} = e.target;
+    setProductData({...productData, [name]: value});
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
-    setProductData({ ...productData, image: file });
+    setProductData({...productData, image: file});
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -42,7 +42,9 @@ export default function ProductsPage() {
           {/* Main Content */}
           <div className="w-3/4 p-6">
             <div className="mb-6 border-b-2 border-gray-300 pb-8">
-              <h1 className="mb-6 text-2xl font-bold">Your Current Listed Products:</h1>
+              <h1 className="mb-6 text-2xl font-bold">
+                Your Current Listed Products:
+              </h1>
               {/* Product Grid */}
               <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                 {/* Placeholder Product Tile 1 */}
