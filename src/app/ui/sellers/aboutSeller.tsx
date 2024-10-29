@@ -1,36 +1,55 @@
 "use client";
 
-import React, {useState} from "react";
 import {raleway} from "@/app/ui/fonts";
+import React, {useState} from "react";
 
-export default function aboutForm() {
+export default function AboutForm() {
   const [formData] = useState({
-    name: '',
-    craftType: '',
-    bio: '',
+    name: "",
+    craftType: "",
+    bio: "",
   });
 
   return (
-
-    <form className="space-y-6 border border-orange-400 rounded p-3">
-        <div >
-          <h1 className={`${raleway.className} text-3xl`}>
+    <form className="mx-auto max-w-md space-y-6 rounded border border-orange-400 p-4">
+      <div>
+        <h1 className={`${raleway.className} text-center text-3xl`}>
           Enter your bio here
-          </h1>
+        </h1>
       </div>
-      <div >
-        <label className=" block">Name</label>
-        <input id="name" type="text" name="name" required className="m-2 block rounded"/>
-        <label className="m-2 block">Type of craft</label>
-        <input id="craft" type="text" name="craft" required className="m-2 block rounded" />
-        <label className="m-2 block">Enter your bio here</label>
-        <input id="bio" type="textbox" name="bio" required className="m-2 block rounded" />
+      <div>
+        <label className="mb-1 block">Name</label>
+        <input
+          id="name"
+          type="text"
+          name="name"
+          required
+          className="m-2 block w-full rounded border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-orange-300"
+        />
+        <label className="m-2 mb-1 block">Type of craft</label>
+        <input
+          id="craft"
+          type="text"
+          name="craft"
+          required
+          className="m-2 block w-full rounded border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-orange-300"
+        />
+        <label className="m-2 mb-1 block">Enter your bio here</label>
+        <input
+          id="bio"
+          type="textbox"
+          name="bio"
+          required
+          className="m-2 block w-full rounded border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-orange-300"
+        />
       </div>
-      <button type="submit" className="bg-orange-200 rounded text-black py-2 px-4 hover:bg-orange-500 transition duration-300">
+      <button
+        type="submit"
+        className="w-full rounded bg-orange-200 px-4 py-2 text-black transition duration-300 hover:bg-orange-500"
+      >
         Submit
       </button>
     </form>
-
     // <form className="flex-col space-y-6">
     //   <div>
     //     <h1 className={`${raleway.className} m-3 text-xl`}>
