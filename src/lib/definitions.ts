@@ -1,4 +1,4 @@
-export type Salers = {
+export type Seller = {
   id: string;
   name: string;
   email: string;
@@ -13,6 +13,7 @@ export type Product = {
   price: number;
   image_url: string;
   stock_quantity: number;
+  seller_id: string;
 };
 
 export type Follower = {
@@ -33,7 +34,8 @@ export type Sale = {
 
 export type Comment = {
   id: string;
-  user_id: string;
+  user_name: string;
+  rating: number;
   product_id: string;
   content: string;
   timestamp: string;

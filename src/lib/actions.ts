@@ -4,7 +4,7 @@ import {sql} from "@vercel/postgres";
 import {revalidatePath} from "next/cache";
 import {redirect} from "next/navigation";
 import {z} from "zod";
-import {Product} from "./definitions";
+import {Comment, Product, Seller} from "./definitions";
 
 // Definition of the schema for the product using Zod
 const ProductSchema = z.object({
@@ -58,7 +58,6 @@ export async function createProduct(formData: FormData) {
   }
 }
 
-// Function to retrieve all products
 export async function fetchProducts() {
   try {
     const data =
@@ -70,14 +69,57 @@ export async function fetchProducts() {
   }
 }
 
-// Function to retrieve a product by ID
-export async function fetchProductById(id: number) {
+// Function to update user data
+export async function updateSeller(id: string, updates: Partial<Seller>) {
+  const {name, email, profile_picture} = updates;
+
   try {
-    const data =
-      await sql<Product>`SELECT id, productname, description, price, image_url FROM products WHERE id = ${id}`;
-    return data.rows[0]; // Return the product
+    await sql`
+      UPDATE sellers
+      SET
+        name = COALESCE(${name}, name),
+        email = COALESCE(${email}, email),
+        profile_picture = COALESCE(${profile_picture}, profile_picture)
+      WHERE id = ${id}
+    `;
+
+    return {message: "User updated successfully"};
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error("Failed to fetch product.");
+    throw new Error(
+      `Failed to update user data. Reason: ${(error as Error).message}`
+    );
+  }
+}
+
+export async function createComment(newComment: Partial<Comment>) {
+  const {user_name, rating, product_id, content, timestamp} = newComment;
+
+  try {
+    await sql`
+      INSERT INTO comments (user_name, rating, product_id, content, timestamp)
+      VALUES (${user_name}, ${rating}, ${product_id}, ${content}, ${timestamp})
+    `;
+
+    revalidatePath(`/products/${product_id}`);
+    return {message: "✅ Comment created successfully"};
+  } catch (error) {
+    console.error("Database Error:", error);
+    return {message: "❌ Failed to create comment"};
+  }
+}
+
+export async function searchProducts(query: string): Promise<Product[]> {
+  try {
+    const data = await sql<Product>`
+      SELECT id, productname, description, price, image_url, stock_quantity
+      FROM products
+      WHERE productname ILIKE ${"%" + query + "%"}
+      LIMIT 2
+    `;
+    return data.rows;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch products.");
   }
 }

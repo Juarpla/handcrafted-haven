@@ -1,57 +1,55 @@
 import {sql} from "@vercel/postgres";
-import {Follower, Product, Sale, Salers} from "./definitions";
+import {revalidatePath} from "next/cache";
+import {Comment, Follower, Product, Sale, Seller} from "./definitions";
 import {formatCurrency} from "./utils";
 
-// Function to fetch products
 export async function fetchProducts() {
   try {
-    const data = await sql<Product>`
-      SELECT id, productname, description, price, image_url, stock_quantity 
-      FROM products`;
+    const data =
+      await sql<Product>`SELECT id, productname, description, price, image_url, stock_quantity, seller_id FROM products`;
     return data.rows;
   } catch (error) {
     console.error("Database Error:", error);
-    throw new Error(
-      `Failed to fetch products. Reason: ${(error as Error).message}`
-    );
+    throw new Error("Failed to fetch products.");
+  }
+}
+
+export async function fetchProductById(id: string) {
+  try {
+    const data =
+      await sql<Product>`SELECT id, productname, description, price, image_url, stock_quantity, seller_id FROM products WHERE id = ${id}`;
+    revalidatePath(`/products/${id}`);
+    return data.rows[0];
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch product.");
+  }
+}
+
+export async function fetchCommentsByProductId(id: string) {
+  try {
+    const data =
+      await sql<Comment>`SELECT id, user_name, product_id, content, timestamp, rating FROM comments WHERE product_id = ${id}`;
+    revalidatePath(`/products/${id}`);
+    return data.rows;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch comment.");
   }
 }
 
 // Function to fetch users
 export async function fetchUsers() {
   try {
-    const data = await sql<Salers>`
+    const data = await sql<Seller>`
       SELECT id, name, profile_picture 
-      FROM salers 
+      FROM sellers 
       ORDER BY name ASC`;
     return data.rows;
   } catch (error) {
     console.error("Database Error:", error);
     throw new Error(
       `Failed to fetch users. Reason: ${(error as Error).message}`
-    );
-  }
-}
-
-// Function to update user data
-export async function updateUser(id: string, updates: Partial<Salers>) {
-  const {name, email, profile_picture} = updates;
-
-  try {
-    await sql`
-      UPDATE salers
-      SET
-        name = COALESCE(${name}, name),
-        email = COALESCE(${email}, email),
-        profile_picture = COALESCE(${profile_picture}, profile_picture)
-      WHERE id = ${id}
-    `;
-
-    return {message: "User updated successfully"};
-  } catch (error) {
-    console.error("Database Error:", error);
-    throw new Error(
-      `Failed to update user data. Reason: ${(error as Error).message}`
     );
   }
 }
@@ -63,11 +61,11 @@ export async function fetchFollowers(userId: string) {
       SELECT 
         followers.id, 
         followers.follower_id, 
-        salers.name AS follower_name, 
-        salers.profile_picture AS follower_image,
+        sellers.name AS follower_name, 
+        sellers.profile_picture AS follower_image,
         followers.follow_date
       FROM followers
-      JOIN salers ON followers.follower_id = salers.id
+      JOIN sellers ON followers.follower_id = sellers.id
       WHERE followers.user_id = ${userId}
     `;
     return data.rows;

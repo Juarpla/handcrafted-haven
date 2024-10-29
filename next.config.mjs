@@ -8,10 +8,14 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'example.com', // Ajusta al dominio que usas para las imágenes
-        port: '', // Dejar vacío si no usas un puerto específico
-        pathname: '/**', // Permite todas las rutas
+        protocol: "https",
+        hostname: "example.com", // Ajusta al dominio que usas para las imágenes
+        port: "", // Dejar vacío si no usas un puerto específico
+        pathname: "/**", // Permite todas las rutas
+      },
+      {
+        protocol: "https",
+        hostname: "*.vercel-storage.com",
       },
     ],
   },
