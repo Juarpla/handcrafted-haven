@@ -30,7 +30,7 @@ const ProductCard: React.FC<ProductProps> = ({
   };
 
   return (
-    <div className="rounded-lg border p-4 text-center">
+    <div className="rounded-lg border p-4 text-center bg-custom-dark-green">
       <Link href={`/products/${productId}`} className="cursor-pointer">
         <Image
           src={image_url}
@@ -42,7 +42,7 @@ const ProductCard: React.FC<ProductProps> = ({
         />
         <h2 className="text-lg font-semibold">{name}</h2>
       </Link>
-      <p className="text-gray-700">${price.toFixed(2)}</p>
+      <p className="text-white">${price.toFixed(2)}</p>
       <button
         onClick={handleAddToCart}
         className="mt-2 rounded-lg bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
