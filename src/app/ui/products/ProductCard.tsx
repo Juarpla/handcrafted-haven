@@ -31,7 +31,7 @@ const ProductCard: React.FC<ProductProps> = ({
 
   return (
     <div className="rounded-lg border p-4 text-center bg-custom-dark-green">
-      <a href={`/product/${productId}`} className="cursor-pointer">
+      <a href={`/products/${productId}`} className="cursor-pointer">
         <Image
           src={image_url}
           alt={name}
