@@ -101,10 +101,11 @@ function ProductImagesContent() {
         {filteredProducts.map(product => (
           <ProductCard
             key={product.id}
-            productId={parseInt(product.id)}
+            productId={product.id}
+            productCartId={parseInt(product.id)}
             name={product.productname}
             price={product.price}
-            image={product.image_url}
+            image_url={product.image_url}
             onAddToCart={(id: number) => handleAddToCart(Number(id))}
           />
         ))}
